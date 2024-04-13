@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FieldUnits;
 using UnityEngine;
 
 public class FieldUnit : MonoBehaviour
@@ -14,6 +15,8 @@ public class FieldUnit : MonoBehaviour
     public new Rigidbody2D rigidbody2D;
 
     public new Collider2D collider;
+
+    private Attack _attack;
     
     // TODO animator
 
@@ -24,21 +27,17 @@ public class FieldUnit : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
-    public float attackRange = 0.02f;
-
-    public int attackDamage = 10;
-
-    public float attackCooldown = 1.0f;
-
     private float _attackCooldownRemaining = 0f;
 
     private float _retargetCooldownRemaining = 1f;
     private Color _originalColor;
 
-    public bool isPlayerFaction;    
+    public bool isPlayerFaction;
+
     private void Start()
     {
         FieldUnitManager.FieldUnits.Add(this);
+        _attack = this.GetComponent<Attack>();
         currentHealth = maxHealth;
         _originalColor = spriteRenderer.color;
     }
@@ -72,8 +71,7 @@ public class FieldUnit : MonoBehaviour
     private bool IsTargetInAttackRange()
     {
         var distance = Physics2D.Distance(collider, target.collider).distance;
-        return distance <= attackRange;
-        // return Vector3.Distance(collider..position, target.transform.position) <= attackRange;
+        return distance <= _attack.range;
     }
 
     private void MoveTowardsEnemy()
@@ -85,8 +83,8 @@ public class FieldUnit : MonoBehaviour
     private void Attack()
     {
         Debug.Log(this.name + " attacks " + target.name);
-        target.TakeDamage(attackDamage);
-        _attackCooldownRemaining = attackCooldown;
+        _attack.PerformAttack(target);
+        _attackCooldownRemaining = _attack.cooldown;
     }
 
     public void TakeDamage(int damage)

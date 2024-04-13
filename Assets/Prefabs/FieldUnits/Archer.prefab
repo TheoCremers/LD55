@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 7708650296265353440}
   - component: {fileID: 6238113201981068253}
   - component: {fileID: 3773749012926337376}
-  - component: {fileID: 1767200243652763993}
+  - component: {fileID: 3515804377845173396}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,7 +204,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1767200243652763993
+--- !u!114 &3515804377845173396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,12 +213,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2807675096949967938}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af1a73ad1c9c4005a7f182d5918d6b92, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d35207e443249ce9ff17698592d719f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  cooldown: 1
-  range: 0.1
+  damage: 2
+  cooldown: 0.5
+  range: 6
+  projectilePrefab: {fileID: 7561117486353819576, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
+  projectileSpeed: 5
+  arcingShot: 0
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +295,7 @@ SpriteRenderer:
   m_SortingLayerID: -973385165
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 953b53466a2041340b1d5b4557f152c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4ca0700b3e07714fb204b6ae4c15c42, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
