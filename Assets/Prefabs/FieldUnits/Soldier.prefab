@@ -132,11 +132,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5c30845d42e12449727f2d56d897c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particleSystem: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
   spriteRenderer: {fileID: 3216286695863328958}
   rigidbody2D: {fileID: 3773749012926337376}
+  collider: {fileID: 6238113201981068253}
   moveSpeed: 1
   target: {fileID: 0}
-  attackRange: 0.5
+  maxHealth: 100
+  currentHealth: 0
+  attackRange: 0.1
+  attackDamage: 10
   attackCooldown: 1
   isPlayerFaction: 0
 --- !u!58 &6238113201981068253

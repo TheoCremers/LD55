@@ -6,9 +6,14 @@ using UnityEngine;
 
 public class FieldUnit : MonoBehaviour
 {
+    [SerializeField] private ParticleSystem _particleSystem = null;
+    private ParticleSystem _particleSystemInstance;
+    
     public SpriteRenderer spriteRenderer;
 
     public new Rigidbody2D rigidbody2D;
+
+    public new Collider2D collider;
     
     // TODO animator
 
@@ -17,7 +22,7 @@ public class FieldUnit : MonoBehaviour
     public FieldUnit target = null;
 
     public int maxHealth = 100;
-    public int _currentHealth;
+    public int currentHealth;
 
     public float attackRange = 0.02f;
 
@@ -28,12 +33,14 @@ public class FieldUnit : MonoBehaviour
     private float _attackCooldownRemaining = 0f;
 
     private float _retargetCooldownRemaining = 1f;
+    private Color _originalColor;
 
     public bool isPlayerFaction;    
     private void Start()
     {
         FieldUnitManager.FieldUnits.Add(this);
-        _currentHealth = maxHealth;
+        currentHealth = maxHealth;
+        _originalColor = spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -43,7 +50,7 @@ public class FieldUnit : MonoBehaviour
         _retargetCooldownRemaining -= Time.deltaTime;
         if (target && _retargetCooldownRemaining > 0f)
         {
-            if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
+            if (IsTargetInAttackRange())
             {
                 rigidbody2D.mass = 100f;
                 if (_attackCooldownRemaining <= 0f)
@@ -62,13 +69,20 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
+    private bool IsTargetInAttackRange()
+    {
+        var distance = Physics2D.Distance(collider, target.collider).distance;
+        return distance <= attackRange;
+        // return Vector3.Distance(collider..position, target.transform.position) <= attackRange;
+    }
+
     private void MoveTowardsEnemy()
     {
         rigidbody2D.mass = 1f;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
     }
     
-    void Attack()
+    private void Attack()
     {
         Debug.Log(this.name + " attacks " + target.name);
         target.TakeDamage(attackDamage);
@@ -77,8 +91,11 @@ public class FieldUnit : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-        if (_currentHealth <= 0)
+        currentHealth -= damage;
+        SpawnParticles();
+        StopCoroutine(DamageFlash());
+        StartCoroutine(DamageFlash());
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -87,6 +104,13 @@ public class FieldUnit : MonoBehaviour
     protected virtual void OnDestroy()
     {
         FieldUnitManager.FieldUnits.Remove(this);
+    }
+    
+    private IEnumerator DamageFlash ()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.05f);
+        spriteRenderer.color = _originalColor;
     }
 
     private void FindClosestEnemy()
@@ -112,5 +136,10 @@ public class FieldUnit : MonoBehaviour
         {
             target = null;
         }
+    }
+
+    private void SpawnParticles()
+    {
+        _particleSystemInstance = Instantiate(_particleSystem, transform.position, Quaternion.identity);
     }
 }

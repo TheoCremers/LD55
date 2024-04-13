@@ -44,3 +44,6 @@ TagManager:
   - name: FieldUnits
     uniqueID: 3321582131
     locked: 0
+  - name: FX
+    uniqueID: 1238076477
+    locked: 0
