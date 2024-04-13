@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,29 +16,39 @@ public class FieldUnit : MonoBehaviour
 
     public FieldUnit target = null;
 
+    public int maxHealth = 100;
+    public int _currentHealth;
+
     public float attackRange = 0.02f;
+
+    public int attackDamage = 10;
 
     public float attackCooldown = 1.0f;
 
-    private float _lastAttackTime = 0f;
+    private float _attackCooldownRemaining = 0f;
+
+    private float _retargetCooldownRemaining = 1f;
 
     public bool isPlayerFaction;    
     private void Start()
     {
         FieldUnitManager.FieldUnits.Add(this);
+        _currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (target)
+        _attackCooldownRemaining -= Time.deltaTime;
+        _retargetCooldownRemaining -= Time.deltaTime;
+        if (target && _retargetCooldownRemaining > 0f)
         {
             if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
             {
-                if (Time.time > _lastAttackTime + attackCooldown)
+                rigidbody2D.mass = 100f;
+                if (_attackCooldownRemaining <= 0f)
                 {
-                    EngageCombat();
-                    _lastAttackTime = Time.time;
+                    Attack();
                 }
             }
             else
@@ -53,14 +64,31 @@ public class FieldUnit : MonoBehaviour
 
     private void MoveTowardsEnemy()
     {
+        rigidbody2D.mass = 1f;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
     }
     
-    void EngageCombat()
+    void Attack()
     {
-        Debug.Log("Engaging in combat with enemy!");
+        Debug.Log(this.name + " attacks " + target.name);
+        target.TakeDamage(attackDamage);
+        _attackCooldownRemaining = attackCooldown;
     }
-    
+
+    public void TakeDamage(int damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    protected virtual void OnDestroy()
+    {
+        FieldUnitManager.FieldUnits.Remove(this);
+    }
+
     private void FindClosestEnemy()
     {
         var enemies = FieldUnitManager.FieldUnits.Where(x => x.isPlayerFaction != isPlayerFaction).ToList();
@@ -78,6 +106,7 @@ public class FieldUnit : MonoBehaviour
             }
 
             if (closest) target = closest;
+            _retargetCooldownRemaining = 1f;
         }
         else
         {
