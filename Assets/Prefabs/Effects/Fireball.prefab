@@ -12,6 +12,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: a41a0f6581f56c5408e41039ea4afd3e, type: 3}
+    - target: {fileID: 7197120150079596725, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
+      propertyPath: m_Size.x
+      value: 0.18096222
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197120150079596725, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
+      propertyPath: m_Size.y
+      value: 0.099772885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197120150079596725, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.00036165194
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197120150079596725, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.005915754
+      objectReference: {fileID: 0}
     - target: {fileID: 7561117486353819576, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
       propertyPath: m_Name
       value: Fireball

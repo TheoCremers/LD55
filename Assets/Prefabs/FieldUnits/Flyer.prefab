@@ -174,7 +174,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039717376, y: -0.1382167}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.11553526
 --- !u!50 &3773749012926337376
@@ -219,7 +219,7 @@ MonoBehaviour:
   damage: 2
   cooldown: 0.3
   range: 2
-  projectilePrefab: {fileID: 3810644702842286389, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
+  projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
   projectileSpeed: 4
   arcingShot: 0
 --- !u!1 &7763447321765551378
