@@ -37,7 +37,7 @@ public class FieldUnit : MonoBehaviour
     private Color _originalColor;
 
     [HideInInspector] public float damageModifier = 1.0f;
-    [HideInInspector] public float defenseModifer = 1.0f;
+    [HideInInspector] public float defenseModifier = 1.0f;
     [HideInInspector] public float cooldownModifier = 1.0f;
     [HideInInspector] public float movementModifier = 1.0f;
 
@@ -55,6 +55,7 @@ public class FieldUnit : MonoBehaviour
 
     private void FixedUpdate()
     {
+        ApplyAuraEffects();
         _attackCooldownRemaining -= Time.deltaTime;
         _retargetCooldownRemaining -= Time.deltaTime;
         if (target && _retargetCooldownRemaining > 0f)
@@ -78,21 +79,53 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
+    private void ApplyAuraEffects()
+    {
+        if (appliedAuraEffects.Contains(AuraEffect.Empower))
+        {
+            damageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 1.0f : 1.3f;
+        }
+        else
+        {
+            damageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 0.7f : 1.0f;
+        }
+        if (appliedAuraEffects.Contains(AuraEffect.Protect))
+        {
+            defenseModifier = appliedAuraEffects.Contains(AuraEffect.Expose) ? 1.0f : 1.3f;
+        }
+        else
+        {
+            defenseModifier = appliedAuraEffects.Contains(AuraEffect.Expose) ? 0.7f : 1.0f;
+        }
+        if (appliedAuraEffects.Contains(AuraEffect.Frenzy))
+        {
+            movementModifier = appliedAuraEffects.Contains(AuraEffect.Slow) ? 1.0f : 1.3f;
+            cooldownModifier = appliedAuraEffects.Contains(AuraEffect.Slow) ? 1.0f : 1.3f;
+        }
+        else
+        {
+            movementModifier = appliedAuraEffects.Contains(AuraEffect.Slow) ? 0.7f : 1.0f;
+            cooldownModifier = appliedAuraEffects.Contains(AuraEffect.Slow) ? 0.7f : 1.0f;
+        }
+    }
+
     private void ApplyHealingTick()
     {
+        if (appliedAuraEffects.Contains(AuraEffect.Degen))
+        {
+            TakeDamage(maxHealth * 0.05f); // 5% max hp dmg per second. Maybe tweak or customize in aura
+        }
         if (appliedAuraEffects.Contains(AuraEffect.Healing))
         {
-            TakeHealing(maxHealth / 20.0f); // 5% healing per second. Maybe tweak or customize in aura
+            TakeHealing(maxHealth * 0.05f); // 5% max hp healing per second. Maybe tweak or customize in aura
         }
     }
 
     public void ApplyAuraEffect(AuraEffect effect)
     {
-        Debug.Log("applied aura to " + name);
         // Check if we already have the effect
         if (appliedAuraEffects.Contains(effect))
         {
-            Debug.Log("already has aura " + name);
             return;
         }
         appliedAuraEffects.Add(effect);
@@ -109,7 +142,6 @@ public class FieldUnit : MonoBehaviour
         {
             return;
         }
-        Debug.Log("removed aura from " + name);
         appliedAuraEffects.Remove(effect);
     }
 
@@ -134,7 +166,7 @@ public class FieldUnit : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage * defenseModifer;
+        currentHealth -= damage * defenseModifier;
         SpawnDamageParticles();
         StopCoroutine(DamageFlash());
         StartCoroutine(DamageFlash());
@@ -144,17 +176,17 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
-    public void ApplyFaction(bool isPlayerFaction)
+    public void ApplyFaction(bool playerFaction)
     {
-        this.isPlayerFaction = isPlayerFaction;
-        spriteRenderer.flipX = !isPlayerFaction;
-        spriteRenderer.color = isPlayerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
+        this.isPlayerFaction = playerFaction;
+        spriteRenderer.flipX = !playerFaction;
+        spriteRenderer.color = playerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
         _originalColor = spriteRenderer.color;
     }
 
     private void TakeHealing(float healing)
     {
-        currentHealth = Mathf.Max(currentHealth + healing, maxHealth);
+        currentHealth = Mathf.Min(currentHealth + healing, maxHealth);
         SpawnHealingParticles();
         // Healing flash? probably not needed
     }
