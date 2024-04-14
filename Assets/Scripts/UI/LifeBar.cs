@@ -1,19 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LifeBar : MonoBehaviour
 {
-    public Image fillImage;
+    public RectMask2D mask;
     public float healthRatio;
 
-    public void Start()
-    {
-        SetHealthRatio(healthRatio);
-    }
+    private float _maxTopMask = 45f;
+    private float _initialTopMask = 7f;
 
-    public void Update()
+    private void Start()
     {
         SetHealthRatio(healthRatio);
     }
@@ -21,6 +17,9 @@ public class LifeBar : MonoBehaviour
     public void SetHealthRatio(float ratio)
     {
         healthRatio = ratio;
-        fillImage.material.SetFloat("_TransitionRatio", healthRatio);
+        var targetTopPadding = Mathf.Lerp(_maxTopMask, _initialTopMask, ratio);
+        var padding = mask.padding;
+        padding.w = targetTopPadding;
+        mask.padding = padding;
     }
 }
