@@ -7,6 +7,8 @@ public class GameAssets : MonoBehaviour
     //
     // [SerializeField] public List<BGMMetadata> BGMMetadata = new List<BGMMetadata>();
 
+    public List<GameModeSettings> GameModeSettingsList = new List<GameModeSettings>();
+
     public Transform DamagePopup; 
 
     private static GameAssets _instance;

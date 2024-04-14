@@ -5,18 +5,23 @@ public class UnitSpawner : MonoBehaviour
     public UnitWave unitWave;
     public bool isPlayerFaction;
     public float baseSpawnInterval = 15f;
+    public VoidEventChannel gameConfiguredEvent;
 
     private FieldUnitManager _fieldUnitManager;
     private SimpleTimer _spawnTimer;
 
     private void Awake()
     {
+        gameConfiguredEvent.OnEventRaised += StartGame;
         _fieldUnitManager = GetComponentInParent<FieldUnitManager>();
         _spawnTimer = gameObject.AddComponent<SimpleTimer>();
+    }
+
+    private void StartGame()
+    {
         _spawnTimer.SetTimer(baseSpawnInterval, true);
         _spawnTimer.OnTimerElapsed += SpawnWave;
         _spawnTimer.StartTimer();
-
         SpawnWave();
     }
 

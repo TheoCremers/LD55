@@ -52,7 +52,6 @@ public class FieldUnit : MonoBehaviour
     private void Awake()
     {
         appliedAuraEffects = new List<AuraEffect>();
-        FieldUnitManager.FieldUnits.Add(this);
         _attack = this.GetComponent<Attack>();
         currentHealth = maxHealth;
         _originalColor = spriteRenderer.color;
@@ -205,10 +204,7 @@ public class FieldUnit : MonoBehaviour
         // Healing flash? probably not needed
     }
 
-    protected virtual void OnDestroy()
-    {
-        FieldUnitManager.FieldUnits.Remove(this);
-    }
+
     
     private IEnumerator DamageFlash ()
     {
@@ -219,7 +215,7 @@ public class FieldUnit : MonoBehaviour
 
     private void FindClosestEnemy()
     {
-        var enemies = FieldUnitManager.FieldUnits.Where(x => x.isPlayerFaction != isPlayerFaction).ToList();
+        var enemies = FieldUnitManager.fieldUnits.Where(x => x.isPlayerFaction != isPlayerFaction).ToList();
         if (_attack.canTargetFlying == false)
         {
             enemies = enemies.Where(x => !x.flying).ToList();
