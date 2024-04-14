@@ -9,10 +9,10 @@ namespace FieldUnits
         private bool _isBuff => appliedEffect is AuraEffect.Healing or AuraEffect.Frenzy or AuraEffect.Empower or AuraEffect.Protect;
         public FieldUnit parent;
 
-        private void Awake()
+        private void Start()
         {
-            // Aura also effects the unit with the aura (?)
-            parent.ApplyAuraEffect(appliedEffect);
+            if (_isBuff)
+                parent.ApplyAuraEffect(appliedEffect);
         }
 
         private void OnTriggerEnter2D (Collider2D collision)

@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using FieldUnits;
@@ -41,7 +43,7 @@ public class FieldUnit : MonoBehaviour
 
     public bool isPlayerFaction;
 
-    private void Start()
+    private void Awake()
     {
         appliedAuraEffects = new List<AuraEffect>();
         FieldUnitManager.FieldUnits.Add(this);
@@ -86,9 +88,11 @@ public class FieldUnit : MonoBehaviour
 
     public void ApplyAuraEffect(AuraEffect effect)
     {
+        Debug.Log("applied aura to " + name);
         // Check if we already have the effect
         if (appliedAuraEffects.Contains(effect))
         {
+            Debug.Log("already has aura " + name);
             return;
         }
         appliedAuraEffects.Add(effect);
@@ -105,7 +109,7 @@ public class FieldUnit : MonoBehaviour
         {
             return;
         }
-
+        Debug.Log("removed aura from " + name);
         appliedAuraEffects.Remove(effect);
     }
 
@@ -147,10 +151,10 @@ public class FieldUnit : MonoBehaviour
         spriteRenderer.color = isPlayerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
         _originalColor = spriteRenderer.color;
     }
-        
-    public void TakeHealing(float healing)
+
+    private void TakeHealing(float healing)
     {
-        currentHealth = Math.Max(currentHealth + healing, maxHealth);
+        currentHealth = Mathf.Max(currentHealth + healing, maxHealth);
         SpawnHealingParticles();
         // Healing flash? probably not needed
     }
@@ -198,10 +202,10 @@ public class FieldUnit : MonoBehaviour
 
     private void SpawnDamageParticles()
     {
-        Instantiate(damageParticles, transform.position, Quaternion.identity);
+        var emitter = Instantiate(damageParticles, transform, false);
     }
     private void SpawnHealingParticles()
     {
-        Instantiate(healingParticles, transform.position, Quaternion.identity);
+        var emitter = Instantiate(healingParticles, transform, false);
     }
 }
