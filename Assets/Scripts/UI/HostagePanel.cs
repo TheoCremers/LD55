@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class HostagePanel : MonoBehaviour
 {
-    public HostageUsedEventChannel hostageUsedEventChannel; 
+    public HostageUsedEventChannel hostageUsedEventChannel;
+    public VoidEventChannel hostageGainedEvent;
 
     public Button sacrificeButton;
     public Button recruitButton;
@@ -26,6 +27,7 @@ public class HostagePanel : MonoBehaviour
         sacrificeButton?.onClick.AddListener(() => OnHostageUsed(HostageUseType.Sacrifice));
         recruitButton?.onClick.AddListener(() => OnHostageUsed(HostageUseType.Recruit));
         ransomButtom?.onClick.AddListener(() => OnHostageUsed(HostageUseType.Ransom));
+        hostageGainedEvent.OnEventRaised += AddHostage;
 
         if (_hostageList.Count == 0)
         {
@@ -64,6 +66,8 @@ public class HostagePanel : MonoBehaviour
             }
         }
     }
+
+
 
     private async Task FadeOut()
     {

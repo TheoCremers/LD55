@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostageUsedEventChannel: {fileID: 11400000, guid: 8206da679f7ede04eb353ffcabe80814, type: 2}
+  hostageGainedEvent: {fileID: 11400000, guid: fbfa12967aa90c940b62800faeb99b0f, type: 2}
   sacrificeButton: {fileID: 4526592787037756776}
   recruitButton: {fileID: 8963919611909357241}
   ransomButtom: {fileID: 6246525484415363226}
@@ -824,7 +825,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5027322391866489027}
   m_HandleRect: {fileID: 46378433936619942}
   m_Direction: 0
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

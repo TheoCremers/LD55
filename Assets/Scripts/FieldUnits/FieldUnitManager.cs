@@ -1,21 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FieldUnitManager : MonoBehaviour
 {
     public Transform playerFieldUnitParent;
     public Transform enemyFieldUnitParent;
     public UnitSummonedEventChannel unitSummonedEventChannel;
+    public FieldUnitEventChannel fieldUnitSlainEventChannel;
+    public VoidEventChannel hostageGainedEventChannel;
 
     public static List<FieldUnit> FieldUnits = new List<FieldUnit>();
 
     public const float FlightHeight = 1.35f;
     public const float MaxRandomHorizontalOffset = 0.1f;
     public const float MaxRandomVerticalOffset = 0.15f;
+    public int hostagePerKills = 5;
+    private static int _killCount;
 
     private void Awake()
     {
+        _killCount = 0;
         unitSummonedEventChannel.OnEventRaised += OnUnitSummonedEvent;
+        fieldUnitSlainEventChannel.OnEventRaised += OnFieldUnitSlainEvent;
     }
 
     private void OnDestroy()
@@ -26,6 +33,28 @@ public class FieldUnitManager : MonoBehaviour
     public void OnUnitSummonedEvent(GameObject unitPrefab, float lifeForce)
     {
         SpawnFieldUnitPrefab(unitPrefab, true);
+    }
+
+    private void OnFieldUnitSlainEvent(FieldUnit fieldUnit)
+    {
+        if (fieldUnit.IsCastle)
+        {
+            // TODO: Victory / Loss screen
+            SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+        }
+        else
+        {
+            // TODO: Death effect / animation
+            Destroy(fieldUnit.gameObject);
+            if (!fieldUnit.isPlayerFaction)
+            {
+                _killCount++;
+                if (_killCount % hostagePerKills == 0)
+                {
+                    hostageGainedEventChannel.RaiseEvent();
+                }
+            }
+        }
     }
 
     public void SpawnFieldUnitPrefab(GameObject unitPrefab, bool isPlayerFaction)

@@ -22,8 +22,6 @@ public class UnitSpawner : MonoBehaviour
 
     public async void SpawnWave()
     {
-        Debug.Log("Spawn unit wave");
-
         foreach (var unitTally in unitWave.units)
         {
             var amountSpawned = Random.Range(unitTally.minAmount, unitTally.maxAmount + 1); // +1 because it's max exclusive for integers

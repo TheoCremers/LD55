@@ -6,11 +6,15 @@ using DG.Tweening;
 using FieldUnits;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FieldUnit : MonoBehaviour
 {
+    public FieldUnitEventChannel FieldUnitSlainEventChannel;
+    
     [SerializeField] private ParticleSystem damageParticles = null;
     [SerializeField] private ParticleSystem healingParticles = null;
+    
 
     public SpriteRenderer spriteRenderer;
     public new Rigidbody2D rigidbody2D;
@@ -42,6 +46,8 @@ public class FieldUnit : MonoBehaviour
     [HideInInspector] public float movementModifier = 1.0f;
 
     public bool isPlayerFaction;
+
+    public bool IsCastle;
 
     private void Awake()
     {
@@ -173,8 +179,13 @@ public class FieldUnit : MonoBehaviour
         StartCoroutine(DamageFlash());
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        FieldUnitSlainEventChannel.RaiseEvent(this);
     }
 
     public void ApplyFaction(bool playerFaction)
