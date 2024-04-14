@@ -168,6 +168,7 @@ public class FieldUnit : MonoBehaviour
     {
         currentHealth -= damage * defenseModifier;
         SpawnDamageParticles();
+        DamagePopup.Create(this.transform, (int)damage, false);
         StopCoroutine(DamageFlash());
         StartCoroutine(DamageFlash());
         if (currentHealth <= 0)
@@ -187,6 +188,7 @@ public class FieldUnit : MonoBehaviour
     private void TakeHealing(float healing)
     {
         currentHealth = Mathf.Min(currentHealth + healing, maxHealth);
+        DamagePopup.Create(this.transform, (int)healing, true);
         SpawnHealingParticles();
         // Healing flash? probably not needed
     }
