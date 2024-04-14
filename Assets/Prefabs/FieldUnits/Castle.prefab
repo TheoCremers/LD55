@@ -60,7 +60,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   damageModifier: 1
-  defenseModifer: 1
+  defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1
   isPlayerFaction: 0
@@ -145,8 +145,9 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4446969667305314954, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
   projectileSpeed: 5
   arcingShot: 1
-  maxLaunchAngle: 75
+  maxLaunchAngle: 60
   minLaunchAngle: 35
+  meleeDistance: 2
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0
