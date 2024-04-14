@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     private Rigidbody2D _rigidBody2D;
 
-    public int damage;
+    public float damage;
 
     public bool isPlayerFaction;
 
