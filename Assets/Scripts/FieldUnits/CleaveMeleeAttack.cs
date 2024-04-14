@@ -18,7 +18,7 @@ namespace FieldUnits
         
         private List<FieldUnit> FindNearbyTargets(FieldUnit splashOrigin)
         {
-            var allies = FieldUnitManager.FieldUnits.Where(x => x.isPlayerFaction == splashOrigin.isPlayerFaction).ToList();
+            var allies = FieldUnitManager.fieldUnits.Where(x => x.isPlayerFaction == splashOrigin.isPlayerFaction).ToList();
             return allies.Where(ally => IsTargetInCleaveRange(splashOrigin.collider, ally.collider)).ToList();
         }
         

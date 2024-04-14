@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class FieldUnitManager : MonoBehaviour
 {
@@ -9,12 +12,21 @@ public class FieldUnitManager : MonoBehaviour
     public UnitSummonedEventChannel unitSummonedEventChannel;
     public FieldUnitEventChannel fieldUnitSlainEventChannel;
     public VoidEventChannel hostageGainedEventChannel;
+    public GameStartEventChannel gameStartEvent;
+    public VoidEventChannel gameConfiguredEvent;
 
-    public static List<FieldUnit> FieldUnits = new List<FieldUnit>();
+    public FieldUnit playerCastle;
+    public FieldUnit enemyCastle;
 
-    public const float FlightHeight = 1.35f;
-    public const float MaxRandomHorizontalOffset = 0.1f;
-    public const float MaxRandomVerticalOffset = 0.15f;
+    private GameModeType _gameModeType;
+    private GameModeSettings _gameSettings;
+
+    private static List<FieldUnit> _fieldUnits = new List<FieldUnit>();
+    public static List<FieldUnit> fieldUnits => _fieldUnits;
+
+    public const float flightHeight = 1.35f;
+    public const float maxRandomHorizontalOffset = 0.1f;
+    public const float maxRandomVerticalOffset = 0.15f;
     public int hostagePerKills = 5;
     private static int _killCount;
 
@@ -23,11 +35,25 @@ public class FieldUnitManager : MonoBehaviour
         _killCount = 0;
         unitSummonedEventChannel.OnEventRaised += OnUnitSummonedEvent;
         fieldUnitSlainEventChannel.OnEventRaised += OnFieldUnitSlainEvent;
+        gameStartEvent.OnEventRaised += OnGameStartEvent;
+        
+        _fieldUnits.Clear();
+        _fieldUnits.Add(playerCastle);
+        _fieldUnits.Add(enemyCastle);
     }
 
     private void OnDestroy()
     {
         unitSummonedEventChannel.OnEventRaised -= OnUnitSummonedEvent;
+    }
+
+    private void OnGameStartEvent(GameModeType gameModeType)
+    {
+        _gameModeType = gameModeType;
+        _gameSettings = GameAssets.Instance.GameModeSettingsList.First(x => x.GameModeType == gameModeType);
+        playerCastle.maxHealth = 1000 * _gameSettings.PlayerCastleHealthMod;
+        enemyCastle.maxHealth = 1000 * _gameSettings.EnemyCastleHealthMod;
+        gameConfiguredEvent.RaiseEvent();
     }
 
     public void OnUnitSummonedEvent(GameObject unitPrefab, float lifeForce)
@@ -39,12 +65,23 @@ public class FieldUnitManager : MonoBehaviour
     {
         if (fieldUnit.IsCastle)
         {
-            // TODO: Victory / Loss screen
-            SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+            if (fieldUnit.isPlayerFaction)
+            {
+                // gg go next
+                // TODO: Loss animation, or text, or something
+                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+            }
+            else
+            {
+                // TODO: Win screen, or text, or credits
+                DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
+                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+            }
         }
         else
         {
             // TODO: Death effect / animation
+            _fieldUnits.Remove(fieldUnit);
             Destroy(fieldUnit.gameObject);
             if (!fieldUnit.isPlayerFaction)
             {
@@ -62,6 +99,8 @@ public class FieldUnitManager : MonoBehaviour
         var newUnit = Instantiate(unitPrefab);
         var fieldUnit = newUnit.GetComponent<FieldUnit>();
         fieldUnit.ApplyFaction(isPlayerFaction);
+        fieldUnit.maxHealth *= (isPlayerFaction ? _gameSettings.PlayerUnitHealthMod : _gameSettings.EnemyUnitHealthMod);
+        _fieldUnits.Add(fieldUnit);
         SetFieldUnitPosition(fieldUnit);
     }
 
@@ -69,11 +108,11 @@ public class FieldUnitManager : MonoBehaviour
     {
         fieldUnit.transform.SetParent(fieldUnit.isPlayerFaction ? playerFieldUnitParent : enemyFieldUnitParent, false);
         
-        var randomOffset = new Vector3(Random.Range(-MaxRandomHorizontalOffset, MaxRandomHorizontalOffset), Random.Range(-MaxRandomVerticalOffset, MaxRandomVerticalOffset));
+        var randomOffset = new Vector3(Random.Range(-maxRandomHorizontalOffset, maxRandomHorizontalOffset), Random.Range(-maxRandomVerticalOffset, maxRandomVerticalOffset));
         fieldUnit.transform.position += randomOffset;
         if (fieldUnit.flying)
         {
-            fieldUnit.transform.position += Vector3.up * FlightHeight;
+            fieldUnit.transform.position += Vector3.up * flightHeight;
         }
     }
 }
