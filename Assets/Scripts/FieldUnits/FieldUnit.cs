@@ -1,7 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using FieldUnits;
 using UnityEngine;
 
@@ -11,9 +10,7 @@ public class FieldUnit : MonoBehaviour
     private ParticleSystem _particleSystemInstance;
     
     public SpriteRenderer spriteRenderer;
-
     public new Rigidbody2D rigidbody2D;
-
     public new Collider2D collider;
 
     private Attack _attack;
@@ -44,8 +41,7 @@ public class FieldUnit : MonoBehaviour
         _originalColor = spriteRenderer.color;
     }
 
-    // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         _attackCooldownRemaining -= Time.deltaTime;
         _retargetCooldownRemaining -= Time.deltaTime;
@@ -99,6 +95,14 @@ public class FieldUnit : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void ApplyFaction(bool isPlayerFaction)
+    {
+        this.isPlayerFaction = isPlayerFaction;
+        spriteRenderer.flipX = !isPlayerFaction;
+        spriteRenderer.color = isPlayerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
+        _originalColor = spriteRenderer.color;
     }
 
     protected virtual void OnDestroy()

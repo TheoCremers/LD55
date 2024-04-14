@@ -53,7 +53,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
   moveSpeed: 1
-  flying: 0
+  flying: 1
   target: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
   projectileSpeed: 4
   arcingShot: 0
+  maxLaunchAngle: 45
+  minLaunchAngle: 35
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0

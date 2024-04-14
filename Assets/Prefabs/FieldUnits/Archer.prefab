@@ -219,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   cooldown: 0.5
-  range: 6
+  range: 3
   canTargetFlying: 1
   projectilePrefab: {fileID: 4446969667305314954, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
   projectileSpeed: 5

@@ -43,9 +43,16 @@ public class Summon : MonoBehaviour
     {
         //_canBeSummoned = knowledge >= minKnowledgeRequired;
 
+        _actualBloodCost = CalculateActualBloodCost(knowledge);
+
+        if (_actualBloodCost >= totalLifeForce)
+        {
+            hintTextMesh.text = SummonHintText.Lethal;
+            return;
+        }
+
         if (knowledge <= minKnowledgeRequired)
         {
-            _actualBloodCost = maxBloodCost;
             hintTextMesh.text = SummonHintText.Extreme;
             return;
         }
@@ -56,23 +63,18 @@ public class Summon : MonoBehaviour
             hintTextMesh.text = SummonHintText.Low;
             return;
         }
-
-        _actualBloodCost = CalculateActualBloodCost(knowledge);
-
-        if (_actualBloodCost > totalLifeForce)
-        {
-            hintTextMesh.text = SummonHintText.Lethal;
-        }
-        else 
-        {
-            hintTextMesh.text = _actualBloodCost < medianBloodCost ? SummonHintText.Medium : SummonHintText.Hard;
-        }
+        
+        hintTextMesh.text = _actualBloodCost < medianBloodCost ? SummonHintText.Medium : SummonHintText.Hard;
     }
 
     private float CalculateActualBloodCost(float knowledge)
     {
-        float knowledgeGap = (maxKnowledgeForSummon - minKnowledgeRequired);
-        if (knowledgeGap <= 0) { return minBloodcost; }
+
+        if (knowledge <= minKnowledgeRequired) return maxBloodCost;
+        if (knowledge >= maxKnowledgeForSummon) return minBloodcost;
+
+        float knowledgeGap = maxKnowledgeForSummon - minKnowledgeRequired;
+        if (knowledgeGap <= 0) throw new System.Exception("knowledgeGap is negative, check your summon config");
         float scaledKnowledge = (knowledge - minKnowledgeRequired) / knowledgeGap;
         return Mathf.SmoothStep(maxBloodCost, minBloodcost, scaledKnowledge);
     }

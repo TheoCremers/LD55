@@ -42,6 +42,7 @@ public class ResourceManager : MonoBehaviour
                 //TODO: Game over here
             }
         }
+        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
     }
 
     public void OnHostageUsed(HostageUseType type, float knowledge, float lifeForce, float ransomValue)
