@@ -22,6 +22,8 @@ public class FieldUnit : MonoBehaviour
 
     public float moveSpeed = 0.05f;
 
+    public bool flying = false;
+
     public FieldUnit target = null;
 
     public int maxHealth = 100;
@@ -114,6 +116,10 @@ public class FieldUnit : MonoBehaviour
     private void FindClosestEnemy()
     {
         var enemies = FieldUnitManager.FieldUnits.Where(x => x.isPlayerFaction != isPlayerFaction).ToList();
+        if (_attack.canTargetFlying == false)
+        {
+            enemies = enemies.Where(x => !x.flying).ToList();
+        }
         if (enemies.Any())
         {
             FieldUnit closest = null;

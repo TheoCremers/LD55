@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2340197446921682811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0351, y: -0.186, z: 0}
+  m_LocalPosition: {x: -0.041, y: -0.056, z: 0}
   m_LocalScale: {x: 0.3590408, y: 0.097126216, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -138,6 +138,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
   moveSpeed: 1
+  flying: 0
   target: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
@@ -174,9 +175,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.039717376, y: -0.1382167}
+  m_Offset: {x: -0.018775344, y: 0}
   serializedVersion: 2
-  m_Radius: 0.11553526
+  m_Radius: 0.096759915
 --- !u!50 &3773749012926337376
 Rigidbody2D:
   serializedVersion: 4
@@ -216,12 +217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d35207e443249ce9ff17698592d719f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 5
   cooldown: 0.5
   range: 6
+  canTargetFlying: 1
   projectilePrefab: {fileID: 4446969667305314954, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
   projectileSpeed: 5
-  arcingShot: 0
+  arcingShot: 1
+  maxLaunchAngle: 55
+  minLaunchAngle: 35
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0
