@@ -6,6 +6,7 @@ public class ResourceManager : MonoBehaviour
     public ResourceCounter knowledgeCounter;
     public AcolytePanel acolytePanel;
     public SummonPanel summonPanel;
+    public HostagePanel hostagePanel;
     public UnitSummonedEventChannel unitSummonedEventChannel;
     public HostageUsedEventChannel hostageUsedEventChannel;
     public ResourceUpdateEventChannel resourceUpdateEventChannel;
@@ -43,6 +44,11 @@ public class ResourceManager : MonoBehaviour
             }
         }
         resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
+
+        if (acolytePanel.hasEmptySlots)
+        {
+            hostagePanel.AllowRecruit();
+        }
     }
 
     public void OnHostageUsed(HostageUseType type, float knowledge, float lifeForce, float ransomValue)
@@ -56,6 +62,7 @@ public class ResourceManager : MonoBehaviour
                 OnRecruit(knowledge, lifeForce);
                 break;
             case HostageUseType.Ransom:
+                OnAcolyteSlotAdd();
                 break;
         }
     }
@@ -71,6 +78,17 @@ public class ResourceManager : MonoBehaviour
         knowledgeCounter.ChangeResource(knowledge);
         acolytePanel.AddAcolyte(lifeForce);
         resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
+
+        if (!acolytePanel.hasEmptySlots)
+        {
+            hostagePanel.BlockRecruit();
+        }
+    }
+
+    private void OnAcolyteSlotAdd()
+    {
+        acolytePanel.AddAcolyteSlot();
+        hostagePanel.AllowRecruit();
     }
 
     private float CalculateTotalLifeForce()

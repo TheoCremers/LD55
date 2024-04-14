@@ -15,6 +15,8 @@ public class HostagePanel : MonoBehaviour
     public GameObject hostagePrefab;
     public RectTransform hostageParent;
 
+    public int maxHostage = 5;
+
     private CanvasGroup _canvasGroup;
     private List<Hostage> _hostageList;
     private float _fadeTime = 0.5f;
@@ -43,6 +45,8 @@ public class HostagePanel : MonoBehaviour
 
     public void AddHostage()
     {
+        if ( _hostageList.Count >= maxHostage) return;
+
         var newHostageObject = Instantiate(hostagePrefab);
         newHostageObject.transform.SetParent(hostageParent, false);
         var newHostage = newHostageObject.GetComponent<Hostage>();
@@ -63,6 +67,16 @@ public class HostagePanel : MonoBehaviour
                 _ = FadeOut();
             }
         }
+    }
+
+    public void BlockRecruit()
+    {
+        recruitButton.interactable = false;
+    }
+
+    public void AllowRecruit()
+    {
+        recruitButton.interactable = true;
     }
 
     private async Task FadeOut()
