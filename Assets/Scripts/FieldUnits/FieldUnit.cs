@@ -162,6 +162,7 @@ public class FieldUnit : MonoBehaviour
         rigidbody2D.mass = 1f;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 
             moveSpeed * movementModifier * Time.deltaTime);
+        spriteRenderer.flipX = (target.transform.position.x - transform.position.x) < 0;
     }
     
     private void Attack()

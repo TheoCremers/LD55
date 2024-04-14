@@ -234,6 +234,7 @@ MonoBehaviour:
   arcingShot: 1
   maxLaunchAngle: 55
   minLaunchAngle: 35
+  meleeDistance: 1
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0
