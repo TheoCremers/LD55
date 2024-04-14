@@ -147,7 +147,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   damageModifier: 1
-  defenseModifer: 1
+  defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1
   isPlayerFaction: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   arcingShot: 0
   maxLaunchAngle: 55
   minLaunchAngle: 35
+  meleeDistance: 1
 --- !u!114 &4886315332097995878
 MonoBehaviour:
   m_ObjectHideFlags: 0
