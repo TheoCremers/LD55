@@ -7,12 +7,12 @@ namespace FieldUnits
     public class CleaveMeleeAttack : Attack
     {
         public float cleaveRange = 0f;
-        public override void PerformAttack(FieldUnit target)
+        public override void PerformAttack(FieldUnit origin, FieldUnit target)
         {
             // TODO swing animation, possible delay
             foreach (var fieldUnit in FindNearbyTargets(target))
             {
-                fieldUnit.TakeDamage(damage);
+                fieldUnit.TakeDamage(damage * origin.damageModifier);
             }
         }
         

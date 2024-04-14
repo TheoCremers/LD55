@@ -1,19 +1,24 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using FieldUnits;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FieldUnit : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem _particleSystem = null;
-    private ParticleSystem _particleSystemInstance;
-    
+    [SerializeField] private ParticleSystem damageParticles = null;
+    [SerializeField] private ParticleSystem healingParticles = null;
+
     public SpriteRenderer spriteRenderer;
     public new Rigidbody2D rigidbody2D;
     public new Collider2D collider;
 
     private Attack _attack;
+
+    public List<AuraEffect> appliedAuraEffects;
     
     // TODO animator
 
@@ -23,22 +28,29 @@ public class FieldUnit : MonoBehaviour
 
     public FieldUnit target = null;
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
 
     private float _attackCooldownRemaining = 0f;
 
     private float _retargetCooldownRemaining = 1f;
     private Color _originalColor;
 
+    [HideInInspector] public float damageModifier = 1.0f;
+    [HideInInspector] public float defenseModifer = 1.0f;
+    [HideInInspector] public float cooldownModifier = 1.0f;
+    [HideInInspector] public float movementModifier = 1.0f;
+
     public bool isPlayerFaction;
 
-    private void Start()
+    private void Awake()
     {
+        appliedAuraEffects = new List<AuraEffect>();
         FieldUnitManager.FieldUnits.Add(this);
         _attack = this.GetComponent<Attack>();
         currentHealth = maxHealth;
         _originalColor = spriteRenderer.color;
+        InvokeRepeating(nameof(ApplyHealingTick), 1f, 1f);
     }
 
     private void FixedUpdate()
@@ -66,6 +78,41 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
+    private void ApplyHealingTick()
+    {
+        if (appliedAuraEffects.Contains(AuraEffect.Healing))
+        {
+            TakeHealing(maxHealth / 20.0f); // 5% healing per second. Maybe tweak or customize in aura
+        }
+    }
+
+    public void ApplyAuraEffect(AuraEffect effect)
+    {
+        Debug.Log("applied aura to " + name);
+        // Check if we already have the effect
+        if (appliedAuraEffects.Contains(effect))
+        {
+            Debug.Log("already has aura " + name);
+            return;
+        }
+        appliedAuraEffects.Add(effect);
+    }
+
+    public void RemoveAuraEffect(AuraEffect effect)
+    {
+        // Check if we're no longer in any other duplicate aura
+        var currentColliders = new Collider2D[]{};
+        var filter = new ContactFilter2D();
+        filter.SetLayerMask(LayerMask.NameToLayer("Aura"));
+        collider.GetContacts(filter, currentColliders);
+        if (currentColliders.Any(currentCollider => currentCollider.GetComponent<Aura>().appliedEffect == effect))
+        {
+            return;
+        }
+        Debug.Log("removed aura from " + name);
+        appliedAuraEffects.Remove(effect);
+    }
+
     private bool IsTargetInAttackRange()
     {
         var distance = Physics2D.Distance(collider, target.collider).distance;
@@ -75,20 +122,20 @@ public class FieldUnit : MonoBehaviour
     private void MoveTowardsEnemy()
     {
         rigidbody2D.mass = 1f;
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 
+            moveSpeed * movementModifier * Time.deltaTime);
     }
     
     private void Attack()
     {
-        Debug.Log(this.name + " attacks " + target.name);
-        _attack.PerformAttack(target);
-        _attackCooldownRemaining = _attack.cooldown;
+        _attack.PerformAttack(this, target);
+        _attackCooldownRemaining = _attack.cooldown * cooldownModifier;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-        SpawnParticles();
+        currentHealth -= damage * defenseModifer;
+        SpawnDamageParticles();
         StopCoroutine(DamageFlash());
         StartCoroutine(DamageFlash());
         if (currentHealth <= 0)
@@ -103,6 +150,13 @@ public class FieldUnit : MonoBehaviour
         spriteRenderer.flipX = !isPlayerFaction;
         spriteRenderer.color = isPlayerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
         _originalColor = spriteRenderer.color;
+    }
+
+    private void TakeHealing(float healing)
+    {
+        currentHealth = Mathf.Max(currentHealth + healing, maxHealth);
+        SpawnHealingParticles();
+        // Healing flash? probably not needed
     }
 
     protected virtual void OnDestroy()
@@ -146,8 +200,12 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
-    private void SpawnParticles()
+    private void SpawnDamageParticles()
     {
-        _particleSystemInstance = Instantiate(_particleSystem, transform.position, Quaternion.identity);
+        var emitter = Instantiate(damageParticles, transform, false);
+    }
+    private void SpawnHealingParticles()
+    {
+        var emitter = Instantiate(healingParticles, transform, false);
     }
 }
