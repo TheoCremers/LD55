@@ -48,15 +48,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e5c30845d42e12449727f2d56d897c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _particleSystem: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
+  damageParticles: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
+  healingParticles: {fileID: 33476908951788772, guid: a3b87fb5841e9d34d9f1a25d24a63a56, type: 3}
   spriteRenderer: {fileID: 3216286695863328958}
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
+  appliedAuraEffects: 
   moveSpeed: 0
   flying: 0
   target: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
+  damageModifier: 1
+  defenseModifer: 1
+  cooldownModifier: 1
+  movementModifier: 1
   isPlayerFaction: 0
 --- !u!58 &6238113201981068253
 CircleCollider2D:

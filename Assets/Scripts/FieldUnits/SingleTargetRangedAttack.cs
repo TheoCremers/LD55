@@ -10,35 +10,30 @@ namespace FieldUnits
         public Projectile projectilePrefab;
         public float projectileSpeed = 1f;
         private float _launchForce = 10f;
-        private FieldUnit _parent;
         public bool arcingShot = true;
         private float _projectileSpawnOffset = 0.2f;
         
         public float maxLaunchAngle = 45.0f; // Maximum launch angle
         public float minLaunchAngle = 35.0f; // Minimum launch angle
 
-        private void Awake()
-        {
-            _parent = gameObject.GetComponent<FieldUnit>();
-        }
-
-        public override void PerformAttack(FieldUnit target)
+        public override void PerformAttack(FieldUnit origin, FieldUnit target)
         {
             // Shoot projectile 
-            FireProjectile(new Vector2(transform.position.x, transform.position.y + _projectileSpawnOffset)
-                , target.collider.transform);
+            FireProjectile(origin, target.collider.transform);
         }
         
-        private void FireProjectile(Vector2 startPosition, Transform targetPosition)
+        private void FireProjectile(FieldUnit origin, Transform targetPosition)
         {
+            var startPosition = new Vector2(origin.transform.position.x,
+                origin.transform.position.y + _projectileSpawnOffset);
             var projectile = Instantiate(projectilePrefab, startPosition, quaternion.identity);
-            projectile.damage = damage;
-            projectile.isPlayerFaction = _parent.isPlayerFaction;
+            projectile.damage = damage * origin.damageModifier;
+            projectile.isPlayerFaction = origin.isPlayerFaction;
             var rb = projectile.GetComponent<Rigidbody2D>();
 
             if (arcingShot)
             {
-                rb.velocity = CalcLaunchVel(targetPosition, Random.Range(minLaunchAngle, maxLaunchAngle));
+                rb.velocity = CalculateLaunchVelocity(targetPosition, Random.Range(minLaunchAngle, maxLaunchAngle));
                 float launchAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
                 projectile.transform.rotation = Quaternion.Euler(0, 0, launchAngle);
             }
@@ -60,9 +55,8 @@ namespace FieldUnits
             return new Vector2(xVelocity, yVelocity) * Mathf.Sqrt(_launchForce * projectileSpeed / (distance * Mathf.Sqrt(projectileSpeed)));
         }
 
-        private Vector2 CalcLaunchVel(Transform target, float angle)
+        private Vector2 CalculateLaunchVelocity(Transform target, float angle)
         {
-            Debug.Log(angle);
             var dir = target.position - transform.position;  // get target direction
             var h = dir.y;  // get height difference
             dir.y = 0;  // retain only the horizontal direction
@@ -75,21 +69,19 @@ namespace FieldUnits
             return vel * dir.normalized;
         }
         
-        private Vector2 calcBallisticVelocityVector(Vector2 source, Transform target, float angle)
-        {
-            Vector3 direction = (Vector2)target.position -  source;			// get target direction
-            float h = direction.y;											// get height difference
-            direction.y = 0;												// remove height
-            float distance = direction.magnitude;							// get horizontal distance
-            float a = angle * Mathf.Deg2Rad;								// Convert angle to radians
-            direction.y = distance * Mathf.Tan(a);							// Set direction to elevation angle
-            distance += h/Mathf.Tan(a);										// Correction for small height differences
-		
-            // calculate velocity
-            float velocity = Mathf.Sqrt(distance * Physics.gravity.magnitude / Mathf.Sin(2*a));
-            return velocity * direction.normalized;
-		
-        }
-    
+        // private Vector2 calcBallisticVelocityVector(Vector2 source, Transform target, float angle)
+        // {
+        //     Vector3 direction = (Vector2)target.position -  source;			// get target direction
+        //     float h = direction.y;											// get height difference
+        //     direction.y = 0;												// remove height
+        //     float distance = direction.magnitude;							// get horizontal distance
+        //     float a = angle * Mathf.Deg2Rad;								// Convert angle to radians
+        //     direction.y = distance * Mathf.Tan(a);							// Set direction to elevation angle
+        //     distance += h/Mathf.Tan(a);										// Correction for small height differences
+		      //
+        //     // calculate velocity
+        //     float velocity = Mathf.Sqrt(distance * Physics.gravity.magnitude / Mathf.Sin(2*a));
+        //     return velocity * direction.normalized;
+        // }
     }
 }
