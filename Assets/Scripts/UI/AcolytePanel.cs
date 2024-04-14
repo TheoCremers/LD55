@@ -21,8 +21,8 @@ public class AcolytePanel : MonoBehaviour
             if (_acolytes.Count <= 0) { return false; }
             var sacrifice = _acolytes.Last();
             amount = sacrifice.ChangeCurrentHealth(-amount);
-            if (amount >= 0)
-            {
+            if (sacrifice.currentHealth <= 0)
+            { 
                 _acolytes.Remove(sacrifice);
                 Destroy(sacrifice.gameObject);
                 // sacrificate.DeathAnimation();
