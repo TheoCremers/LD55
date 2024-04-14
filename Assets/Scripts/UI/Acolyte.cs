@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,5 +33,13 @@ public class Acolyte : MonoBehaviour
         
         SetCurrentHealth(newAmount);
         return remainder;
+    }
+
+    public async Task DeathAnimation()
+    {
+        icon.DOKill();
+        await icon.DOColor(new Color(0.25f, 0, 0), 0.2f).AsyncWaitForCompletion();
+        await icon.DOFade(0f, 0.2f).AsyncWaitForCompletion();
+        Destroy(gameObject);
     }
 }

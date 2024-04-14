@@ -17,7 +17,11 @@ public class GameAssets : MonoBehaviour
         {
             if (_instance == null) 
             {
-                _instance = Instantiate(Resources.Load<GameAssets>("GameAssets"));
+                var gameAssets = Resources.Load<GameAssets>("GameAssets");
+                if (gameAssets != null )
+                {
+                    _instance = Instantiate(gameAssets);
+                }
             }
             return _instance;
         }
