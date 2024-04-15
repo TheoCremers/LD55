@@ -38,7 +38,9 @@ public class SkullIndicators : MonoBehaviour
 
     private void RemoveSkull(UnitWave wave)
     {
-        var skull = _indicators.Pop();
-        Destroy(skull.gameObject);
+        if (_indicators.TryPop(out GameObject skull))
+        {
+            Destroy(skull.gameObject);
+        }
     }
 }

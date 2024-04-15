@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5810282209029431813}
   - {fileID: 7007916084727626962}
+  - {fileID: 2070835775477548097}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7708650296265353440
@@ -152,6 +153,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4446969667305314954, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
   projectileSpeed: 5
   arcingShot: 1
+  nozzle: {fileID: 2070835775477548097}
   maxLaunchAngle: 60
   minLaunchAngle: 35
   meleeDistance: 2
@@ -222,6 +224,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0.2817834, y: 0.12374934}
   m_Size: {x: 1.063569, y: 1.0433744}
   m_Direction: 1
+--- !u!1 &7742631578162735881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2070835775477548097}
+  m_Layer: 0
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2070835775477548097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742631578162735881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.008, y: 0.534, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518385389104721060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0

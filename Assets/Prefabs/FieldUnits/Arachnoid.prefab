@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &294816981628038648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3442969281281751444}
+  m_Layer: 13
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3442969281281751444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294816981628038648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.601, y: 1.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518385389104721060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2418813340428306802
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,8 +95,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2817834, y: 0.10787604}
-  m_Size: {x: 1.0635687, y: 0.6200505}
+  m_Offset: {x: 0.2817834, y: 0.17231481}
+  m_Size: {x: 1.063569, y: 0.6200517}
   m_Direction: 1
 --- !u!1 &2807675096949967938
 GameObject:
@@ -106,6 +137,7 @@ Transform:
   - {fileID: 5650276904591916467}
   - {fileID: 8139657670548912462}
   - {fileID: 1645850432844218565}
+  - {fileID: 3442969281281751444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7708650296265353440
@@ -174,9 +206,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.018775344, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
-  m_Radius: 0.096759915
+  m_Radius: 0.12539938
 --- !u!50 &3773749012926337376
 Rigidbody2D:
   serializedVersion: 4
@@ -223,6 +255,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
   projectileSpeed: 8
   arcingShot: 0
+  nozzle: {fileID: 3442969281281751444}
   maxLaunchAngle: 55
   minLaunchAngle: 35
   meleeDistance: 1
@@ -422,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.041
+      value: 0.042
       objectReference: {fileID: 0}
     - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.164
+      value: 1.025
       objectReference: {fileID: 0}
     - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -480,11 +513,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.049
       objectReference: {fileID: 0}
     - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.156
       objectReference: {fileID: 0}
     - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: m_LocalPosition.z

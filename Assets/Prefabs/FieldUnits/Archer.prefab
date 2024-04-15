@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1138619904414681527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.403, z: 0}
+  m_LocalPosition: {x: 0, y: 0.403, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64,8 +64,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0075966716, y: -0.06837022}
-  m_Size: {x: 0.43618774, y: 0.86325955}
+  m_Offset: {x: 0.0030292124, y: -0.082072556}
+  m_Size: {x: 0.33570418, y: 0.7566861}
   m_Direction: 0
 --- !u!1 &2340197446921682811
 GameObject:
@@ -187,6 +187,7 @@ Transform:
   - {fileID: 4873205150039102438}
   - {fileID: 7007916084727626962}
   - {fileID: 8220569928511291557}
+  - {fileID: 1285165344334448525}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7708650296265353440
@@ -255,9 +256,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.096759915
+  m_Radius: 0.08914753
 --- !u!50 &3773749012926337376
 Rigidbody2D:
   serializedVersion: 4
@@ -304,6 +305,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 4446969667305314954, guid: eb3c71fc6b2bfa940bbb17fd09799695, type: 3}
   projectileSpeed: 5
   arcingShot: 1
+  nozzle: {fileID: 1285165344334448525}
   maxLaunchAngle: 55
   minLaunchAngle: 35
   meleeDistance: 1
@@ -391,3 +393,34 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8097684506514199967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285165344334448525}
+  m_Layer: 13
+  m_Name: Nozzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285165344334448525
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8097684506514199967}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518385389104721060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
