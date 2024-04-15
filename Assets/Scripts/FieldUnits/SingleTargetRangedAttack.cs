@@ -62,9 +62,10 @@ namespace FieldUnits
             var a = angle * Mathf.Deg2Rad;  // convert angle to radians
             dir.y = dist * Mathf.Tan(a);  // set dir to the elevation angle
             dist += h / Mathf.Tan(a);  // correct for small height differences
-            // calculate the velocity magnitude
-            var vel = Mathf.Sqrt(dist * Physics.gravity.magnitude / Mathf.Sin(2 * a));
-            return vel * dir.normalized;
+            // calculate the velocity
+            var vel2 = dist * Physics.gravity.magnitude / Mathf.Sin(2 * a);
+            if (vel2 > 0) return Mathf.Sqrt(vel2) * dir.normalized;
+            else return Vector2.zero;
         }
 
         private Vector2 CalculateVelocityVectorFromSpeed(Vector3 startPosition, Vector3 targetPosition, float projectileSpeed)

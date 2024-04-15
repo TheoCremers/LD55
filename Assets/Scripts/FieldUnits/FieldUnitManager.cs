@@ -45,6 +45,8 @@ public class FieldUnitManager : MonoBehaviour
     private void OnDestroy()
     {
         unitSummonedEventChannel.OnEventRaised -= OnUnitSummonedEvent;
+        fieldUnitSlainEventChannel.OnEventRaised -= OnFieldUnitSlainEvent;
+        gameStartEvent.OnEventRaised -= OnGameStartEvent;
     }
 
     private void OnGameStartEvent(GameModeType gameModeType)
@@ -82,7 +84,6 @@ public class FieldUnitManager : MonoBehaviour
         {
             // TODO: Death effect / animation
             _fieldUnits.Remove(fieldUnit);
-            Destroy(fieldUnit.gameObject);
             if (!fieldUnit.isPlayerFaction)
             {
                 _killCount++;

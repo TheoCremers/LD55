@@ -1,12 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using DG.Tweening;
 using FieldUnits;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class FieldUnit : MonoBehaviour
 {
@@ -186,6 +184,7 @@ public class FieldUnit : MonoBehaviour
     private void Die()
     {
         FieldUnitSlainEventChannel.RaiseEvent(this);
+        _ = DeathAnimation();
     }
 
     public void ApplyFaction(bool playerFaction)
@@ -211,6 +210,14 @@ public class FieldUnit : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.05f);
         spriteRenderer.color = _originalColor;
+    }
+
+    public async Task DeathAnimation()
+    {
+        spriteRenderer.DOKill();
+        await spriteRenderer.DOColor(new Color(0.25f, 0, 0), 0.2f).AsyncWaitForCompletion();
+        await spriteRenderer.DOFade(0f, 0.2f).AsyncWaitForCompletion();
+        Destroy(gameObject);
     }
 
     private void FindClosestEnemy()

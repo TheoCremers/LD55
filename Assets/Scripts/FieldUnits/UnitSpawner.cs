@@ -14,15 +14,21 @@ public class UnitSpawner : MonoBehaviour
     {
         gameConfiguredEvent.OnEventRaised += StartGame;
         _fieldUnitManager = GetComponentInParent<FieldUnitManager>();
-        _spawnTimer = gameObject.AddComponent<SimpleTimer>();
     }
 
     private void StartGame()
     {
+        _spawnTimer = gameObject.AddComponent<SimpleTimer>();
         _spawnTimer.SetTimer(baseSpawnInterval, true);
         _spawnTimer.OnTimerElapsed += SpawnWave;
         _spawnTimer.StartTimer();
         SpawnWave();
+    }
+
+    private void OnDestroy()
+    {
+        if (_spawnTimer != null) _spawnTimer.OnTimerElapsed -= SpawnWave;
+        gameConfiguredEvent.OnEventRaised -= StartGame;
     }
 
     public async void SpawnWave()
