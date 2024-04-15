@@ -14,11 +14,11 @@ public class SummonPanel : MonoBehaviour
         resourceUpdateEventChannel.OnEventRaised += UpdateAllSummons;
     }
 
-    public void UpdateAllSummons(float knowledge, float totalLifeForce)
+    public void UpdateAllSummons(float knowledge, float totalLifeForce, int numberOfAcolytes)
     {
         foreach (var summon in _summonList) 
         { 
-            summon.OnKnowledgeUpdated(knowledge, totalLifeForce);
+            summon.OnKnowledgeUpdated(knowledge, totalLifeForce, numberOfAcolytes);
         }
     }
 

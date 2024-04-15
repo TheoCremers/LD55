@@ -44,9 +44,15 @@ public class Summon : MonoBehaviour
         }
     }
 
-    public void OnKnowledgeUpdated(float knowledge, float totalLifeForce)
+    public void OnKnowledgeUpdated(float knowledge, float totalLifeForce, int numberOfAcolytes)
     {
+        summonButton.interactable = numberOfAcolytes > 0;
         _canBeSummoned = knowledge >= minKnowledgeRequired;
+        if (numberOfAcolytes <= 0)
+        {
+            hintTextMesh.text = SummonHintText.Impossible;
+            return;
+        }
 
         if (!_canBeSummoned) 
         { 

@@ -23,7 +23,7 @@ public class ResourceManager : MonoBehaviour
 
     private void Start()
     {
-        summonPanel.UpdateAllSummons(knowledgeCounter.amount, CalculateTotalLifeForce());
+        summonPanel.UpdateAllSummons(knowledgeCounter.amount, CalculateTotalLifeForce(), acolytePanel.NumberOfAcolytes);
     }
 
     private void OnDestroy()
@@ -38,14 +38,12 @@ public class ResourceManager : MonoBehaviour
         var remainder = lifeForceCounter.ChangeResource(-bloodCost);
         if (remainder > 0f)
         {
-            if (!acolytePanel.DrainBloodFromAcolytes(remainder))
-            {
-                //TODO: Game over here
-            }
+            var knowledgeLost = acolytePanel.DrainBloodFromAcolytes(remainder);
+            knowledgeCounter.ChangeResource(-knowledgeLost);
         }
-        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
+        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce(), acolytePanel.NumberOfAcolytes);
 
-        if (acolytePanel.hasEmptySlots)
+        if (acolytePanel.HasEmptySlots)
         {
             hostagePanel.AllowRecruit();
         }
@@ -70,16 +68,16 @@ public class ResourceManager : MonoBehaviour
     private void OnSacrifice(float lifeForce)
     {
         lifeForceCounter.ChangeResource(lifeForce * sacrificeMultiplier);
-        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
+        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce(), acolytePanel.NumberOfAcolytes);
     }
 
     private void OnRecruit(float knowledge, float lifeForce)
     {
         knowledgeCounter.ChangeResource(knowledge);
-        acolytePanel.AddAcolyte(lifeForce);
-        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
+        acolytePanel.AddAcolyte(knowledge, lifeForce);
+        resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce(), acolytePanel.NumberOfAcolytes);
 
-        if (!acolytePanel.hasEmptySlots)
+        if (!acolytePanel.HasEmptySlots)
         {
             hostagePanel.BlockRecruit();
         }

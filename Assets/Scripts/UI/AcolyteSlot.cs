@@ -18,13 +18,14 @@ public class AcolyteSlot : MonoBehaviour
         }
     }
 
-    public bool AddAcolyte(float lifeForce, GameObject acolytePrefab)
+    public bool AddAcolyte(float knowledge, float lifeForce, GameObject acolytePrefab)
     {
         if (acolyte != null) return false;
 
         var newAcolyteObject = Instantiate(acolytePrefab, transform, false);
         var newAcolyte = newAcolyteObject.GetComponent<Acolyte>();
         newAcolyte.maxHealth = lifeForce;
+        newAcolyte.knowledge = knowledge;
         acolyte = newAcolyte;
         summoningParticleSystem.Play();
         return true;
