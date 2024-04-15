@@ -160,7 +160,7 @@ public class FieldUnit : MonoBehaviour
         rigidbody2D.mass = 1f;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 
             moveSpeed * movementModifier * Time.deltaTime);
-        spriteRenderer.flipX = (target.transform.position.x - transform.position.x) < 0;
+        spriteRenderer.flipX = (target.transform.position.x - transform.position.x) > 0;
     }
     
     private void Attack()
@@ -191,8 +191,8 @@ public class FieldUnit : MonoBehaviour
     public void ApplyFaction(bool playerFaction)
     {
         this.isPlayerFaction = playerFaction;
-        spriteRenderer.flipX = !playerFaction;
-        spriteRenderer.color = playerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
+        spriteRenderer.flipX = playerFaction;
+        //spriteRenderer.color = playerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
         _originalColor = spriteRenderer.color;
     }
 

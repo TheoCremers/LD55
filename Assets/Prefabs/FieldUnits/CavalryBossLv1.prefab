@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4216376967793228495}
   - component: {fileID: 2535090643584796092}
   m_Layer: 0
-  m_Name: TestBoss
+  m_Name: CavalryBossLv1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

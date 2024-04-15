@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3773749012926337376}
   - component: {fileID: 1767200243652763993}
   m_Layer: 0
-  m_Name: Soldier
+  m_Name: Chicken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +144,7 @@ MonoBehaviour:
   moveSpeed: 1
   flying: 0
   target: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 30
   currentHealth: 0
   damageModifier: 1
   defenseModifier: 1
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1a73ad1c9c4005a7f182d5918d6b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  cooldown: 1
+  damage: 5
+  cooldown: 0.3
   range: 0.1
   canTargetFlying: 0
 --- !u!1 &7763447321765551378
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_SortingLayerID: -973385165
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 70d86b879905e7b4caaf3bec8ef2316f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bc6ee99725bf96e46b08519cfb1c467b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

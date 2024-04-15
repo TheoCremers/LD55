@@ -56,7 +56,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
   appliedAuraEffects: 
-  moveSpeed: 1
+  moveSpeed: 2
   flying: 1
   target: {fileID: 0}
   maxHealth: 100
@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d35207e443249ce9ff17698592d719f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
-  cooldown: 0.3
+  damage: 7
+  cooldown: 0.8
   range: 2
   canTargetFlying: 1
   projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
@@ -178,7 +178,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3518385389104721060}
@@ -224,7 +224,7 @@ SpriteRenderer:
   m_SortingLayerID: -973385165
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c33abe454de4e0648ba5fe7175f1abbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81542c2389919a842ae8a7098ea7d711, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
