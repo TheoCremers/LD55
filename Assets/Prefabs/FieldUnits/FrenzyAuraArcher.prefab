@@ -82,6 +82,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
   m_PrefabInstance: {fileID: 408302400611754918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5713664166013827300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4804598771922042784}
+    m_Modifications:
+    - target: {fileID: 1861992244149546529, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_Name
+      value: FrenzyEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.017
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.802
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+--- !u!4 &8851591349728219712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3863006724929186468, guid: 5864ee98b5597144691de6057a7bf3cf, type: 3}
+  m_PrefabInstance: {fileID: 5713664166013827300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8250187690863104772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,7 +154,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2807675096949967938, guid: ee37982970a3834478b2ab40d2710434, type: 3}
       propertyPath: m_Name
-      value: AuraArcher
+      value: FrenzyAuraArcher
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: ee37982970a3834478b2ab40d2710434, type: 3}
       propertyPath: m_LocalPosition.x
@@ -140,6 +202,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3518385389104721060, guid: ee37982970a3834478b2ab40d2710434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4067236128240556062}
+    - targetCorrespondingSourceObject: {fileID: 3518385389104721060, guid: ee37982970a3834478b2ab40d2710434, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8851591349728219712}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2807675096949967938, guid: ee37982970a3834478b2ab40d2710434, type: 3}
       insertIndex: -1

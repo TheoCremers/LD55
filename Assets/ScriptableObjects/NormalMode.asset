@@ -18,4 +18,7 @@ MonoBehaviour:
   PlayerUnitHealthMod: 1.3
   EnemyUnitHealthMod: 0.9
   EnemyUnitDamageMod: 0.9
-  IntervalWaves: []
+  IntervalWaves:
+  - {fileID: 11400000, guid: 5380917a6a3fe8a4491d54587b535e51, type: 2}
+  - {fileID: 11400000, guid: c6b832ac5d0bada4a8d6f5460386381f, type: 2}
+  - {fileID: 11400000, guid: ad2faf14084b5ce40864e17ff6a813db, type: 2}

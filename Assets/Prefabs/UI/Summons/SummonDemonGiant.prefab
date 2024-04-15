@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: minKnowledgeRequired
-      value: 700
+      value: 900
       objectReference: {fileID: 0}
     - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: maxKnowledgeForSummon
