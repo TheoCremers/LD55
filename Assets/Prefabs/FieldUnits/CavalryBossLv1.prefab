@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 6238113201981068253}
   - component: {fileID: 3773749012926337376}
   - component: {fileID: -4112484718406965752}
-  - component: {fileID: 2197573075736394792}
   - component: {fileID: 4216376967793228495}
   - component: {fileID: 2535090643584796092}
   m_Layer: 0
@@ -153,7 +152,8 @@ MonoBehaviour:
   target: {fileID: 0}
   maxHealth: 300
   currentHealth: 0
-  damageModifier: 1
+  timeDamageModifier: 1
+  auraDamageModifier: 1
   defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1
@@ -233,25 +233,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8efe2eb41424ed68f2581ae8c3362b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  cooldown: 1
+  damage: 15
+  cooldown: 1.5
   range: 0.1
   canTargetFlying: 0
   cleaveRange: 0.5
---- !u!114 &2197573075736394792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2807675096949967938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f06a7b1399415086f922f023e94dc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  appliedEffect: 3
-  parent: {fileID: 7708650296265353440}
 --- !u!114 &4216376967793228495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 4634822217194546943, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.5377358
+      objectReference: {fileID: 0}
+    - target: {fileID: 4634822217194546943, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 42212
       objectReference: {fileID: 0}
     - target: {fileID: 7497785023883616671, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: m_Name
