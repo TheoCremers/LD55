@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: N1
   m_EditorClassIdentifier: 
   units:
-  - minAmount: 5
-    maxAmount: 5
+  - minAmount: 4
+    maxAmount: 4
     unit: {fileID: 2807675096949967938, guid: b76d66dbbc25c934cab4cae0409843d1, type: 3}
+  - minAmount: 1
+    maxAmount: 1
+    unit: {fileID: 3331858246790462262, guid: 686c555dba6db3449bf38e7b562903be, type: 3}

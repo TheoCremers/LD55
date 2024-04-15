@@ -113,7 +113,7 @@ public class FieldUnitManager : MonoBehaviour
             }
             else
             {
-                //DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
+                DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
                 gameOverEventChannel.RaiseEvent(true, _gameModeType, _playTime);
             }
         }
