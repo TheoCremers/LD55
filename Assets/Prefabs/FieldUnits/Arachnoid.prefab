@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3773749012926337376}
   - component: {fileID: 3515804377845173396}
   - component: {fileID: 2046311514644611540}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arachnoid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

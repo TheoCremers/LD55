@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3773749012926337376}
   - component: {fileID: 1767200243652763993}
   - component: {fileID: 7808764987000932770}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Oni
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 6238113201981068253}
   - component: {fileID: 3773749012926337376}
   - component: {fileID: 3515804377845173396}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Archer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,8 @@ MonoBehaviour:
   target: {fileID: 0}
   maxHealth: 70
   currentHealth: 0
-  damageModifier: 1
+  timeDamageModifier: 1
+  auraDamageModifier: 1
   defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1

@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 4216376967793228495}
   - component: {fileID: 2535090643584796092}
   - component: {fileID: 2997461927187124782}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: CavalryBossLv3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
