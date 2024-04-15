@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameModeType: 0
   PlayerCastleHealthMod: 4
-  EnemyCastleHealthMod: 0.5
+  EnemyCastleHealthMod: 2
   PlayerUnitHealthMod: 2
   EnemyUnitHealthMod: 0.8
   EnemyUnitDamageMod: 0.8

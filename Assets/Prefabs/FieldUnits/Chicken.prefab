@@ -147,9 +147,10 @@ MonoBehaviour:
   moveSpeed: 1
   flying: 0
   target: {fileID: 0}
-  maxHealth: 30
+  maxHealth: 45
   currentHealth: 0
-  damageModifier: 1
+  timeDamageModifier: 1
+  auraDamageModifier: 1
   defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1

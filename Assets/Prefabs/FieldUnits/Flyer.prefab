@@ -129,9 +129,10 @@ MonoBehaviour:
   moveSpeed: 2
   flying: 1
   target: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 40
   currentHealth: 0
-  damageModifier: 1
+  timeDamageModifier: 1
+  auraDamageModifier: 1
   defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1
@@ -213,10 +214,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 7
   cooldown: 0.8
-  range: 2
+  range: 3
   canTargetFlying: 1
   projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
-  projectileSpeed: 4
+  projectileSpeed: 6
   arcingShot: 0
   maxLaunchAngle: 45
   minLaunchAngle: 35

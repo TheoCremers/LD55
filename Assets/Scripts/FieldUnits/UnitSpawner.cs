@@ -31,6 +31,7 @@ public class UnitSpawner : MonoBehaviour
     private void OnDestroy()
     {
         if (_spawnTimer != null) _spawnTimer.OnTimerElapsed -= SpawnRegularWave;
+        if (!isPlayerFaction) unitWaveEventChannel.OnEventRaised -= SpawnIntervalWave;
         gameConfiguredEvent.OnEventRaised -= StartGame;
     }
 
@@ -51,7 +52,7 @@ public class UnitSpawner : MonoBehaviour
     {
         foreach (var unitTally in wave.units)
         {
-            var amountSpawned = Random.Range(unitTally.minAmount, unitTally.maxAmount + 1); // +1 because it's max exclusive for integers
+            var amountSpawned = unitTally.maxAmount;
             for (int i = 0; i < amountSpawned; i++)
             {
                 _fieldUnitManager.SpawnFieldUnitPrefab(unitTally.unit, isPlayerFaction, false);

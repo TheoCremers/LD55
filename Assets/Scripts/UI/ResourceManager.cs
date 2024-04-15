@@ -11,7 +11,7 @@ public class ResourceManager : MonoBehaviour
     public HostageUsedEventChannel hostageUsedEventChannel;
     public ResourceUpdateEventChannel resourceUpdateEventChannel;
 
-    private float _sacrificeMultiplier = 5f;
+    public float sacrificeMultiplier = 5f;
 
     private void Awake()
     {
@@ -69,7 +69,7 @@ public class ResourceManager : MonoBehaviour
 
     private void OnSacrifice(float lifeForce)
     {
-        lifeForceCounter.ChangeResource(lifeForce * _sacrificeMultiplier);
+        lifeForceCounter.ChangeResource(lifeForce * sacrificeMultiplier);
         resourceUpdateEventChannel.RaiseEvent(knowledgeCounter.amount, CalculateTotalLifeForce());
     }
 

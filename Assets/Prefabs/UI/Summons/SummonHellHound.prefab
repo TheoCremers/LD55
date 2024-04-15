@@ -18,15 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 2807675096949967938, guid: 6de920e38d0636f46864fadf8d1d54c4, type: 3}
     - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: maxBloodCost
-      value: 100
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: minBloodcost
-      value: 50
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
+      propertyPath: minKnowledgeRequired
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1114721096536965326, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: maxKnowledgeForSummon
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1699473769428122717, guid: 94c004d52a98e204ab919c3526ec769f, type: 3}
       propertyPath: m_SizeDelta.x

@@ -200,6 +200,7 @@ MonoBehaviour:
   unitSummonedEventChannel: {fileID: 11400000, guid: e8c1973dd1a4d2f459a56ad01aeeef27, type: 2}
   hostageUsedEventChannel: {fileID: 11400000, guid: 8206da679f7ede04eb353ffcabe80814, type: 2}
   resourceUpdateEventChannel: {fileID: 11400000, guid: e583609485c39a14384c9fc84546eacb, type: 2}
+  sacrificeMultiplier: 3
 --- !u!1001 &2185338569084857118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -214,11 +215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 324483102045868090, guid: fe67eb8a4a78148458d36d409a42140f, type: 3}
       propertyPath: m_Size
-      value: 0.7181818
+      value: 0.7181817
       objectReference: {fileID: 0}
     - target: {fileID: 324483102045868090, guid: fe67eb8a4a78148458d36d409a42140f, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 0.0000004614551
       objectReference: {fileID: 0}
     - target: {fileID: 684954456359631558, guid: fe67eb8a4a78148458d36d409a42140f, type: 3}
       propertyPath: m_SortingLayer
@@ -1185,8 +1186,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777328968678266993, guid: 6cd90275f8322d34c89de4ccefbcf993, type: 3}
+      propertyPath: m_Size
+      value: 0.95757574
+      objectReference: {fileID: 0}
+    - target: {fileID: 777328968678266993, guid: 6cd90275f8322d34c89de4ccefbcf993, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: -0.0000027247809
       objectReference: {fileID: 0}
     - target: {fileID: 1597651876166723134, guid: 6cd90275f8322d34c89de4ccefbcf993, type: 3}
       propertyPath: m_AnchorMax.y

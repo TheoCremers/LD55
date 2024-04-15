@@ -147,7 +147,7 @@ MonoBehaviour:
   moveSpeed: 2
   flying: 0
   target: {fileID: 0}
-  maxHealth: 200
+  maxHealth: 150
   currentHealth: 0
   timeDamageModifier: 1
   auraDamageModifier: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1a73ad1c9c4005a7f182d5918d6b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 18
   cooldown: 0.8
   range: 0.1
   canTargetFlying: 0
