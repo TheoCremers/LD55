@@ -13,6 +13,9 @@ namespace FieldUnits
         {
             if (_isBuff)
                 parent.ApplyAuraEffect(appliedEffect);
+            
+            this.GetComponent<Collider2D>().enabled = false;
+            this.GetComponent<Collider2D>().enabled = true;
         }
 
         private void OnTriggerEnter2D (Collider2D collision)

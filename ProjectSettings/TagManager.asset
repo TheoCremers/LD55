@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - DestroyProjectiles
+  - FieldUnitHitBox
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - Aura
-  - 
-  - 
+  - ProjectileHitbox
+  - Projectile
   - 
   - 
   - 

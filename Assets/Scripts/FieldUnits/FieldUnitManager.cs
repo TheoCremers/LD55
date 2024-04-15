@@ -13,6 +13,7 @@ public class FieldUnitManager : MonoBehaviour
     public FieldUnitEventChannel fieldUnitSlainEventChannel;
     public VoidEventChannel hostageGainedEventChannel;
     public GameStartEventChannel gameStartEvent;
+    public UnitWaveEventChannel unitWaveEventChannel;
     public VoidEventChannel gameConfiguredEvent;
 
     public FieldUnit playerCastle;
@@ -20,6 +21,9 @@ public class FieldUnitManager : MonoBehaviour
 
     private GameModeType _gameModeType;
     private GameModeSettings _gameSettings;
+    public float _secondsElapsed;
+    public float nextThresholdPercentage = 0f;
+    private int intervalWavesSpawned = 0;
 
     private static List<FieldUnit> _fieldUnits = new List<FieldUnit>();
     public static List<FieldUnit> fieldUnits => _fieldUnits;
@@ -33,6 +37,8 @@ public class FieldUnitManager : MonoBehaviour
     private void Awake()
     {
         _killCount = 0;
+        nextThresholdPercentage = 0;
+        
         unitSummonedEventChannel.OnEventRaised += OnUnitSummonedEvent;
         fieldUnitSlainEventChannel.OnEventRaised += OnFieldUnitSlainEvent;
         gameStartEvent.OnEventRaised += OnGameStartEvent;
@@ -53,6 +59,8 @@ public class FieldUnitManager : MonoBehaviour
     {
         _gameModeType = gameModeType;
         _gameSettings = GameAssets.Instance.GameModeSettingsList.First(x => x.GameModeType == gameModeType);
+        _secondsElapsed = 0f;
+        nextThresholdPercentage = 100f - (100f / (_gameSettings.IntervalWaves.Count + 1));
         playerCastle.maxHealth = 1000 * _gameSettings.PlayerCastleHealthMod;
         playerCastle.currentHealth = playerCastle.maxHealth;
         enemyCastle.maxHealth = 1000 * _gameSettings.EnemyCastleHealthMod;
@@ -62,7 +70,21 @@ public class FieldUnitManager : MonoBehaviour
 
     public void OnUnitSummonedEvent(GameObject unitPrefab, float lifeForce)
     {
-        SpawnFieldUnitPrefab(unitPrefab, true);
+        SpawnFieldUnitPrefab(unitPrefab, true, true);
+    }
+
+    private void Update()
+    {
+        _secondsElapsed += Time.deltaTime;
+        // Check castle HP thresholds
+        if ((100f*(enemyCastle.currentHealth / enemyCastle.maxHealth) < nextThresholdPercentage) && enemyCastle.currentHealth > 0)
+        {
+            // spawn interval wave
+            unitWaveEventChannel.RaiseEvent(_gameSettings.IntervalWaves[intervalWavesSpawned]);
+            // set next thresholdpercentage
+            nextThresholdPercentage -= (100f / (_gameSettings.IntervalWaves.Count + 1));
+            intervalWavesSpawned++;
+        }
     }
 
     private void OnFieldUnitSlainEvent(FieldUnit fieldUnit)
@@ -97,12 +119,24 @@ public class FieldUnitManager : MonoBehaviour
         }
     }
 
-    public void SpawnFieldUnitPrefab(GameObject unitPrefab, bool isPlayerFaction)
+    public void SpawnFieldUnitPrefab(GameObject unitPrefab, bool isPlayerFaction, bool isSummon)
     {
         var newUnit = Instantiate(unitPrefab);
         var fieldUnit = newUnit.GetComponent<FieldUnit>();
         fieldUnit.ApplyFaction(isPlayerFaction);
         fieldUnit.maxHealth *= (isPlayerFaction ? _gameSettings.PlayerUnitHealthMod : _gameSettings.EnemyUnitHealthMod);
+        if (!isSummon)
+        {
+            // stat boost based on time factor. Every 60 secs boosts enemy ATK and HP by 10%, ally by 5%.
+            // enemies get an additional hp and damage mod from the game settings, based on difficulty.
+            var statBoostFactor = _secondsElapsed / 60.0f;
+            fieldUnit.maxHealth *= (isPlayerFaction ?
+                (1.0f + (statBoostFactor * 0.5f)) :
+                (1.0f + (statBoostFactor)));
+            fieldUnit.timeDamageModifier *= (isPlayerFaction ? 
+                (1.0f + (statBoostFactor * 0.5f)) :
+                (1.0f + (statBoostFactor)) * _gameSettings.EnemyUnitDamageMod);
+        }
         _fieldUnits.Add(fieldUnit);
         SetFieldUnitPosition(fieldUnit);
     }

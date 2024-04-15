@@ -31,8 +31,9 @@ public class Projectile : MonoBehaviour
     
     private void OnTriggerEnter2D (Collider2D collision)
     {
-        if (collision.TryGetComponent(out FieldUnit fieldUnit))
+        if (collision.CompareTag("FieldUnitHitBox"))
         {
+            var fieldUnit = collision.GetComponentInParent<FieldUnit>();
             if (fieldUnit.isPlayerFaction != isPlayerFaction)
             {
                 fieldUnit.TakeDamage(damage);

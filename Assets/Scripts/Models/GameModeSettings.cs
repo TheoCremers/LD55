@@ -13,6 +13,8 @@ public class GameModeSettings : ScriptableObject
     public float PlayerUnitHealthMod;
     
     public float EnemyUnitHealthMod;
+
+    public float EnemyUnitDamageMod;
     
     public List<UnitWave> IntervalWaves;
 }

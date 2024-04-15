@@ -31,22 +31,22 @@ namespace FieldUnits
             projectile.isPlayerFaction = origin.isPlayerFaction;
             var rb = projectile.GetComponent<Rigidbody2D>();
 
-            if (arcingShot && (startPosition - target.transform.position).magnitude > meleeDistance)
+            if (arcingShot && (startPosition - target.hitboxTransform.transform.position).magnitude > meleeDistance)
             {
                 if (target.flying)
                 {
-                    rb.velocity = CalculateVelocityVectorFromSpeed(startPosition, target.transform.position, projectileSpeed);
+                    rb.velocity = CalculateVelocityVectorFromSpeed(startPosition, target.hitboxTransform.transform.position, projectileSpeed);
                 }
                 else
                 {
-                    rb.velocity = CalculateLaunchVelocity(startPosition, target.transform.position, Random.Range(minLaunchAngle, maxLaunchAngle));
+                    rb.velocity = CalculateLaunchVelocity(startPosition, target.hitboxTransform.transform.position, Random.Range(minLaunchAngle, maxLaunchAngle));
                 }
                 float launchAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
                 projectile.transform.rotation = Quaternion.Euler(0, 0, launchAngle);
             }
             else
             {
-                var direction = (target.transform.position - startPosition).normalized;
+                var direction = (target.hitboxTransform.transform.position - startPosition).normalized;
                 var launchVelocity = direction * projectileSpeed;
                 rb.velocity = launchVelocity;
                 rb.gravityScale = 0f;

@@ -1,5 +1,72 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2086938694938490460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3963319350333075604}
+  - component: {fileID: 3625711259676839575}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: FieldUnitHitBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3963319350333075604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086938694938490460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.008, y: 0.403, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518385389104721060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &3625711259676839575
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086938694938490460}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02074702, y: -0.032273173}
+  m_Size: {x: 0.3801283, y: 0.87551785}
+  m_Direction: 0
 --- !u!1 &2340197446921682811
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +186,7 @@ Transform:
   m_Children:
   - {fileID: 7007916084727626962}
   - {fileID: 8220569928511291557}
+  - {fileID: 3963319350333075604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7708650296265353440
@@ -137,9 +205,11 @@ MonoBehaviour:
   damageParticles: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
   healingParticles: {fileID: 33476908951788772, guid: a3b87fb5841e9d34d9f1a25d24a63a56, type: 3}
   deathParticles: {fileID: 6033935768860525670, guid: 10d8bc7aa68cc3b438d3c1271966353f, type: 3}
+  lifeBar: {fileID: 0}
   spriteRenderer: {fileID: 3216286695863328958}
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
+  hitboxTransform: {fileID: 3963319350333075604}
   appliedAuraEffects: 
   moveSpeed: 1
   flying: 0

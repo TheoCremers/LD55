@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 2340197446921682811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3590408, y: 0.097126216, z: 1}
+  m_LocalPosition: {x: 0.1339, y: -0.0401, z: 0}
+  m_LocalScale: {x: 0.98093534, y: 0.1772942, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3518385389104721060}
@@ -120,6 +120,7 @@ Transform:
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1958503793482015944}
   - {fileID: 7007916084727626962}
   - {fileID: 8220569928511291557}
   - {fileID: 5425245652101241463}
@@ -141,9 +142,11 @@ MonoBehaviour:
   damageParticles: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
   healingParticles: {fileID: 33476908951788772, guid: a3b87fb5841e9d34d9f1a25d24a63a56, type: 3}
   deathParticles: {fileID: 6033935768860525670, guid: 10d8bc7aa68cc3b438d3c1271966353f, type: 3}
+  lifeBar: {fileID: 0}
   spriteRenderer: {fileID: 3216286695863328958}
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}
+  hitboxTransform: {fileID: 1958503793482015944}
   appliedAuraEffects: 
   moveSpeed: 2
   flying: 0
@@ -277,6 +280,101 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   appliedEffect: 2
   parent: {fileID: 7708650296265353440}
+--- !u!1 &5922341243716879344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1958503793482015944}
+  - component: {fileID: 301380752870377220}
+  - component: {fileID: 5132180364328673426}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: FieldUnitHitBox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1958503793482015944
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922341243716879344}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18133335, y: 0.11133333, z: 0}
+  m_LocalScale: {x: 0.6666667, y: 0.6666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3518385389104721060}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &301380752870377220
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922341243716879344}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!70 &5132180364328673426
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922341243716879344}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.49409688, y: 0.40836275}
+  m_Size: {x: 1.4882051, y: 1.2210401}
+  m_Direction: 1
 --- !u!1 &7763447321765551378
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +402,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3518385389104721060}
@@ -350,7 +448,7 @@ SpriteRenderer:
   m_SortingLayerID: -973385165
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 953b53466a2041340b1d5b4557f152c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85b4ff5d75360c948abcb1513b2b4ffd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

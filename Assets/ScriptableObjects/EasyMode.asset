@@ -17,4 +17,5 @@ MonoBehaviour:
   EnemyCastleHealthMod: 0.5
   PlayerUnitHealthMod: 2
   EnemyUnitHealthMod: 0.8
+  EnemyUnitDamageMod: 0.8
   IntervalWaves: []

@@ -19,6 +19,8 @@ public class FieldUnit : MonoBehaviour
     public new Rigidbody2D rigidbody2D;
     public new Collider2D collider;
 
+    public Transform hitboxTransform;
+
     private Attack _attack;
 
     public List<AuraEffect> appliedAuraEffects;
@@ -39,7 +41,9 @@ public class FieldUnit : MonoBehaviour
     private float _retargetCooldownRemaining = 1f;
     private Color _originalColor;
 
-    [HideInInspector] public float damageModifier = 1.0f;
+    [HideInInspector] public float timeDamageModifier = 1.0f; // Also includes difficulty setting damage mod
+    [HideInInspector] public float auraDamageModifier = 1.0f;
+    public float damageModifier => auraDamageModifier * timeDamageModifier;
     [HideInInspector] public float defenseModifier = 1.0f;
     [HideInInspector] public float cooldownModifier = 1.0f;
     [HideInInspector] public float movementModifier = 1.0f;
@@ -87,11 +91,11 @@ public class FieldUnit : MonoBehaviour
     {
         if (appliedAuraEffects.Contains(AuraEffect.Empower))
         {
-            damageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 1.0f : 1.3f;
+            auraDamageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 1.0f : 1.3f;
         }
         else
         {
-            damageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 0.7f : 1.0f;
+            auraDamageModifier = appliedAuraEffects.Contains(AuraEffect.Weaken) ? 0.7f : 1.0f;
         }
         if (appliedAuraEffects.Contains(AuraEffect.Protect))
         {
@@ -173,6 +177,7 @@ public class FieldUnit : MonoBehaviour
     {
         currentHealth -= damage * defenseModifier;
         lifeBar?.SetHealthRatio(currentHealth / maxHealth);
+        
         SpawnDamageParticles();
         DamagePopup.Create(this.transform, (int)damage, false);
         StopCoroutine(DamageFlash());
