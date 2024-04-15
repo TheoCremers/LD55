@@ -1,8 +1,8 @@
 public static class SummonHintText
 {
-    public const string Low = "low";
-    public const string Medium = "medium";
-    public const string Hard = "high";
-    public const string Extreme = "???";
+    public const string Low = "low risk";
+    public const string Medium = "medium risk";
+    public const string Hard = "high risk";
+    public const string Extreme = "unknown";
     public const string Lethal = "DEATH";
 }
