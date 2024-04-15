@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa1213511488f5044b0bb8062e9dbc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitWave: {fileID: 11400000, guid: 275698682495f81439b2e30266a6107a, type: 2}
+  unitWave: {fileID: 11400000, guid: 767df56fdec23ad4299b8f3d69772c1d, type: 2}
   isPlayerFaction: 0
   baseSpawnInterval: 20
   gameConfiguredEvent: {fileID: 11400000, guid: 37096871536791c4ab0cbf703df691bf, type: 2}

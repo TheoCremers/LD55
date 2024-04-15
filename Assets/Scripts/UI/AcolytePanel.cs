@@ -44,7 +44,7 @@ public class AcolytePanel : MonoBehaviour
             amount = sacrificeSlot.acolyte.ChangeCurrentHealth(-amount);
             if (sacrificeSlot.acolyte.currentHealth <= 0)
             {
-                knowledgeLost = sacrificeSlot.acolyte.knowledge * knowledgeLostFactor;
+                knowledgeLost += sacrificeSlot.acolyte.knowledge * knowledgeLostFactor;
                 sacrificeSlot.SacrificeAcolyte();
                 occupiedAccolyteSlots.Remove(sacrificeSlot);
             }

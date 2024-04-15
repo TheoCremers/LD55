@@ -66,8 +66,11 @@ public class FieldUnit : MonoBehaviour
         ApplyAuraEffects();
         _attackCooldownRemaining -= Time.deltaTime;
         _retargetCooldownRemaining -= Time.deltaTime;
+
         if (target && _retargetCooldownRemaining > 0f)
         {
+            spriteRenderer.flipX = (target.transform.position.x - transform.position.x) < 0;
+
             if (IsTargetInAttackRange())
             {
                 rigidbody2D.mass = 100f;
@@ -164,7 +167,6 @@ public class FieldUnit : MonoBehaviour
         rigidbody2D.mass = 1f;
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 
             moveSpeed * movementModifier * Time.deltaTime);
-        spriteRenderer.flipX = (target.transform.position.x - transform.position.x) > 0;
     }
     
     private void Attack()
@@ -201,8 +203,7 @@ public class FieldUnit : MonoBehaviour
     public void ApplyFaction(bool playerFaction)
     {
         this.isPlayerFaction = playerFaction;
-        spriteRenderer.flipX = playerFaction;
-        //spriteRenderer.color = playerFaction ? new Color32(49, 86, 204, 255) : new Color32(164, 61, 61, 255);
+        spriteRenderer.flipX = !playerFaction;
         _originalColor = spriteRenderer.color;
     }
 
@@ -214,8 +215,6 @@ public class FieldUnit : MonoBehaviour
         // Healing flash? probably not needed
     }
 
-
-    
     private IEnumerator DamageFlash ()
     {
         spriteRenderer.color = Color.red;
