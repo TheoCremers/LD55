@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   cooldown: 1.5
-  range: 0.1
+  range: 0.3
   canTargetFlying: 0
   cleaveRange: 0.5
 --- !u!114 &2197573075736394792
@@ -508,6 +508,10 @@ PrefabInstance:
     - target: {fileID: 3422496571268925217, guid: c7eb55ce844b26441bd64570d858710e, type: 3}
       propertyPath: m_Name
       value: BossAura
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422496571268925217, guid: c7eb55ce844b26441bd64570d858710e, type: 3}
+      propertyPath: m_TagString
+      value: Aura
       objectReference: {fileID: 0}
     - target: {fileID: 8838719806466645254, guid: c7eb55ce844b26441bd64570d858710e, type: 3}
       propertyPath: m_LocalPosition.x
