@@ -156,7 +156,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6732326937299154977}
   m_HandleRect: {fileID: 1684324726707531006}
   m_Direction: 0
-  m_Value: -0.00000015381846
+  m_Value: -0.00000030763692
   m_Size: 0.71818185
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -332,6 +332,7 @@ MonoBehaviour:
   acolytePrefab: {fileID: 5605947856565005541, guid: 89d7d501748fe9d488538b8b73408ffc, type: 3}
   acolyteParent: {fileID: 5797947187046883147}
   startingMaxAcolytes: 3
+  knowledgeLostFactor: 0.75
 --- !u!114 &3437465612722109792
 MonoBehaviour:
   m_ObjectHideFlags: 0

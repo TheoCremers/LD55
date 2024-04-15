@@ -1,6 +1,4 @@
 using DG.Tweening;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
@@ -10,7 +8,6 @@ using UnityEngine.UI;
 public class GameStartPanel : MonoBehaviour
 {
     public GameStartEventChannel GameStartEvent;
-
 
     public Button easybutton;
     public Button normalbutton;
@@ -35,6 +32,7 @@ public class GameStartPanel : MonoBehaviour
         _canvasGroup.alpha = 0f;
         _canvasGroup.blocksRaycasts = false;
         _ = FadeIn();
+        Time.timeScale = 0f;
     }
 
     private void OnDestroy()
@@ -46,6 +44,7 @@ public class GameStartPanel : MonoBehaviour
 
     private void StartButtonClicked(GameModeType type)
     {
+        Time.timeScale = 1f;
         GameStartEvent.RaiseEvent(type);
         _ = FadeOut();
     }
@@ -54,13 +53,13 @@ public class GameStartPanel : MonoBehaviour
     {
         DOTween.Kill(_canvasGroup);
         _canvasGroup.blocksRaycasts = false;
-        await _canvasGroup.DOFade(0f, _fadeTime).AsyncWaitForCompletion();
+        await _canvasGroup.DOFade(0f, _fadeTime).SetUpdate(true).AsyncWaitForCompletion();
     }
 
     private async Task FadeIn()
     {
         DOTween.Kill(_canvasGroup);
-        await _canvasGroup.DOFade(1f, _fadeTime).AsyncWaitForCompletion();
+        await _canvasGroup.DOFade(1f, _fadeTime).SetUpdate(true).AsyncWaitForCompletion();
         _canvasGroup.blocksRaycasts = true;
     }
 }

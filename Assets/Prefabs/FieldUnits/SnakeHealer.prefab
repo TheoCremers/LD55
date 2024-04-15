@@ -216,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   cooldown: 2
-  range: 2
+  range: 1.5
   canTargetFlying: 1
   projectilePrefab: {fileID: 7042101736623164423, guid: 8445253fac373a34d963c4ec399384fc, type: 3}
   projectileSpeed: 7
@@ -330,34 +330,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3518385389104721060}
     m_Modifications:
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4457206194268732344, guid: ea80a113d105df045a612d8a76089f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
