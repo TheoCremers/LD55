@@ -10,7 +10,7 @@ namespace FieldUnits
         public Projectile projectilePrefab;
         public float projectileSpeed = 1f;
         public bool arcingShot = true;
-        private float _projectileSpawnOffset = 0.2f;
+        public Transform nozzle;
         
         public float maxLaunchAngle = 45.0f; // Maximum launch angle
         public float minLaunchAngle = 35.0f; // Minimum launch angle
@@ -25,7 +25,8 @@ namespace FieldUnits
         
         private void FireProjectile(FieldUnit origin, FieldUnit target)
         {
-            var startPosition = origin.transform.position + Vector3.up * _projectileSpawnOffset;
+            //var startPosition = origin.transform.position + Vector3.up * _projectileSpawnOffset;
+            var startPosition = nozzle.position;
             var projectile = Instantiate(projectilePrefab, startPosition, quaternion.identity);
             projectile.damage = damage * origin.damageModifier;
             projectile.isPlayerFaction = origin.isPlayerFaction;
