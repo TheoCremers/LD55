@@ -8,7 +8,7 @@ public class Summon : MonoBehaviour
     public Image summonIcon;
     public TextMeshProUGUI hintTextMesh;
     public GameObject unitPrefab;
-    public UnitSummonedEventChannel unitSummonedEventChannel; 
+    public UnitSummonedEventChannel unitSummonedEventChannel;
 
     public float minKnowledgeRequired = 100f;
     public float maxKnowledgeForSummon = 400f;
@@ -19,6 +19,7 @@ public class Summon : MonoBehaviour
     public float medianBloodCost { get { return (maxBloodCost + minBloodcost) * 0.5f; } }
 
     private float _actualBloodCost = 0f;
+    private float _randomFactor = 0.1f;
 
     private const float LowRiskThreshold = 100f;
     private const float MediumRiskthreshold = 250f;
@@ -40,7 +41,7 @@ public class Summon : MonoBehaviour
     {
         if (canBeSummoned)
         {
-            unitSummonedEventChannel?.RaiseEvent(unitPrefab, _actualBloodCost);
+            unitSummonedEventChannel?.RaiseEvent(unitPrefab, ApplyRandomFactor(_actualBloodCost));
         }
     }
 
@@ -73,5 +74,10 @@ public class Summon : MonoBehaviour
         if (knowledgeGap <= 0) throw new System.Exception("knowledgeGap is negative, check your summon config");
         float scaledKnowledge = (knowledge - minKnowledgeRequired) / knowledgeGap;
         return Mathf.SmoothStep(maxBloodCost, minBloodcost, scaledKnowledge);
+    }
+
+    private float ApplyRandomFactor(float input)
+    {
+        return Random.Range(input * (1f - _randomFactor), input * (1f + _randomFactor));
     }
 }

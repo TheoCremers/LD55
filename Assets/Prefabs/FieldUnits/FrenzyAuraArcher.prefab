@@ -156,6 +156,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrenzyAuraArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 3216286695863328958, guid: ee37982970a3834478b2ab40d2710434, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7b74f03d5cecfcc4f818886c6e240cf2, type: 3}
     - target: {fileID: 3518385389104721060, guid: ee37982970a3834478b2ab40d2710434, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
