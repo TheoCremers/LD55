@@ -130,8 +130,8 @@ Transform:
   m_GameObject: {fileID: 1018759802122844069}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.8, y: 0.26, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3763506345842359222}
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 1197434598960996742}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.243, y: -1.399, z: 0}
+  m_LocalPosition: {x: -0.22, y: -1.434, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -272,7 +272,7 @@ Transform:
   m_GameObject: {fileID: 1810213474081118443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.6, z: 0}
+  m_LocalPosition: {x: -2.811, y: -0.607, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -295,6 +295,7 @@ MonoBehaviour:
   isPlayerFaction: 1
   baseSpawnInterval: 30
   gameConfiguredEvent: {fileID: 11400000, guid: 37096871536791c4ab0cbf703df691bf, type: 2}
+  unitWaveEventChannel: {fileID: 0}
 --- !u!1 &4430905326385722238
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 4430905326385722238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 0.08, z: 0}
+  m_LocalPosition: {x: -0.02, y: 0.009, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -426,7 +427,7 @@ Transform:
   m_GameObject: {fileID: 4726698603282458702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -0.6, z: 0}
+  m_LocalPosition: {x: 8.06, y: -0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -449,6 +450,7 @@ MonoBehaviour:
   isPlayerFaction: 0
   baseSpawnInterval: 20
   gameConfiguredEvent: {fileID: 11400000, guid: 37096871536791c4ab0cbf703df691bf, type: 2}
+  unitWaveEventChannel: {fileID: 11400000, guid: 6e4753ff09d212a4a97f80225de64d87, type: 2}
 --- !u!1 &4912271683495128604
 GameObject:
   m_ObjectHideFlags: 0
@@ -685,8 +687,8 @@ Transform:
   m_GameObject: {fileID: 5740367909470789796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2646965, y: -0.078140676, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.5175, y: -0.0329, z: 0}
+  m_LocalScale: {x: 1.7048247, y: 1.2786211, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 789546642888832829}
@@ -797,9 +799,13 @@ MonoBehaviour:
   fieldUnitSlainEventChannel: {fileID: 11400000, guid: def25e3b9e99a5b4ca234f62231fc07c, type: 2}
   hostageGainedEventChannel: {fileID: 11400000, guid: fbfa12967aa90c940b62800faeb99b0f, type: 2}
   gameStartEvent: {fileID: 11400000, guid: b8824742072e50548b0df53127ff8145, type: 2}
+  unitWaveEventChannel: {fileID: 11400000, guid: 6e4753ff09d212a4a97f80225de64d87, type: 2}
   gameConfiguredEvent: {fileID: 11400000, guid: 37096871536791c4ab0cbf703df691bf, type: 2}
   playerCastle: {fileID: 3671688999876445518}
   enemyCastle: {fileID: 7558334973271809183}
+  virtualCamera: {fileID: 0}
+  _secondsElapsed: 0
+  nextThresholdPercentage: 0
   hostagePerKills: 5
 --- !u!1001 &152622139233285247
 PrefabInstance:
@@ -827,11 +833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.23
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14000002
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -900,11 +906,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.77
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14000002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: f4fdd29e1e2980047b74919479e99cd1, type: 3}
       propertyPath: m_LocalPosition.z

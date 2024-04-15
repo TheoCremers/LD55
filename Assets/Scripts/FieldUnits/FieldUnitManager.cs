@@ -50,16 +50,6 @@ public class FieldUnitManager : MonoBehaviour
         _fieldUnits.Add(enemyCastle);
     }
 
-    private void Update()
-    {
-        if (virtualCamera != null)
-        {
-            // Set camera lookat object to right-most friendly unit
-            var friendlyUnits = _fieldUnits.Where(f => f.isPlayerFaction);
-            var rightMostUnit = friendlyUnits.OrderByDescending(u => u.transform.position.x).FirstOrDefault();
-            virtualCamera.Follow = rightMostUnit.transform;
-        }
-    }
 
     private void OnDestroy()
     {
@@ -88,6 +78,14 @@ public class FieldUnitManager : MonoBehaviour
 
     private void Update()
     {
+        if (virtualCamera != null)
+        {
+            // Set camera lookat object to right-most friendly unit
+            var friendlyUnits = _fieldUnits.Where(f => f.isPlayerFaction);
+            var rightMostUnit = friendlyUnits.OrderByDescending(u => u.transform.position.x).FirstOrDefault();
+            virtualCamera.Follow = rightMostUnit.transform;
+        }
+        
         _secondsElapsed += Time.deltaTime;
         // Check castle HP thresholds
         if ((100f*(enemyCastle.currentHealth / enemyCastle.maxHealth) < nextThresholdPercentage) && enemyCastle.currentHealth > 0)
