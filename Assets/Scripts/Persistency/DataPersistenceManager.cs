@@ -6,7 +6,7 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     public static DataPersistenceManager instance { get; private set; }
-    private GameData _gameData;
+    private static GameData _gameData;
     private FileDataHandler _dataHandler;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public GameData LoadGame()
     {
-        _gameData = _dataHandler.Load();
+        //_gameData = _dataHandler.Load();
         if (_gameData == null)
         {
             return NewGame();
@@ -37,7 +37,8 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (_gameData.HighestClearedMode < data.HighestClearedMode)
         {
-            _dataHandler.Save(data);
+            _gameData = data;
+            //_dataHandler.Save(data);
         }
     }
 }

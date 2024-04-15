@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559457c1e74c1874c9eb122081f342fb, type: 3}
+  m_Name: VH1
+  m_EditorClassIdentifier: 
+  units:
+  - minAmount: 6
+    maxAmount: 6
+    unit: {fileID: 2807675096949967938, guid: b76d66dbbc25c934cab4cae0409843d1, type: 3}
+  - minAmount: 1
+    maxAmount: 1
+    unit: {fileID: 6091206876418793286, guid: 479818c17e279704db836cdc9763adb3, type: 3}

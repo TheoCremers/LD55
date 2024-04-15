@@ -175,6 +175,10 @@ public class FieldUnit : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (currentHealth < 0)
+        {
+            return; 
+        }
         currentHealth -= damage * defenseModifier;
         lifeBar?.SetHealthRatio(currentHealth / maxHealth);
         

@@ -8,6 +8,7 @@ public class UnitSpawner : MonoBehaviour
     public float baseSpawnInterval = 15f;
     public VoidEventChannel gameConfiguredEvent;
     public UnitWaveEventChannel unitWaveEventChannel;
+    private bool _gameStarted = false;
 
     private FieldUnitManager _fieldUnitManager;
     private SimpleTimer _spawnTimer;
@@ -21,6 +22,7 @@ public class UnitSpawner : MonoBehaviour
 
     private void StartGame()
     {
+        _gameStarted = true;
         _spawnTimer = gameObject.AddComponent<SimpleTimer>();
         _spawnTimer.SetTimer(baseSpawnInterval, true);
         _spawnTimer.OnTimerElapsed += SpawnRegularWave;
@@ -30,13 +32,16 @@ public class UnitSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
+        _gameStarted = false;
         if (_spawnTimer != null) _spawnTimer.OnTimerElapsed -= SpawnRegularWave;
         if (!isPlayerFaction) unitWaveEventChannel.OnEventRaised -= SpawnIntervalWave;
         gameConfiguredEvent.OnEventRaised -= StartGame;
+        if (_spawnTimer != null) _spawnTimer.StopAllCoroutines();
     }
 
     public async void SpawnRegularWave()
     {
+        if (!_gameStarted) return;
         foreach (var unitTally in unitWave.units)
         {
             var amountSpawned = Random.Range(unitTally.minAmount, unitTally.maxAmount + 1); // +1 because it's max exclusive for integers

@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     private Rigidbody2D _rigidBody2D;
+    
+    private bool _hitTarget = false;
 
     public float damage;
 
@@ -31,11 +34,13 @@ public class Projectile : MonoBehaviour
     
     private void OnTriggerEnter2D (Collider2D collision)
     {
+        if (_hitTarget) return;
         if (collision.CompareTag("FieldUnitHitBox"))
         {
             var fieldUnit = collision.GetComponentInParent<FieldUnit>();
             if (fieldUnit.isPlayerFaction != isPlayerFaction)
             {
+                _hitTarget = true;
                 fieldUnit.TakeDamage(damage);
                 Destroy(gameObject);
             }

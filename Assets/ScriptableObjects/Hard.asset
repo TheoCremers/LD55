@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 187110772cfe421cb5684b5138efc5ad, type: 3}
-  m_Name: HardMode
+  m_Name: Hard
   m_EditorClassIdentifier: 
   GameModeType: 2
-  PlayerCastleHealthMod: 1
-  EnemyCastleHealthMod: 6
-  PlayerUnitHealthMod: 1
-  EnemyUnitHealthMod: 1
-  EnemyUnitDamageMod: 1
+  PlayerCastleHealthMod: 2
+  EnemyCastleHealthMod: 4
+  PlayerUnitHealthMod: 1.3
+  EnemyUnitHealthMod: 0.9
+  EnemyUnitDamageMod: 0.9
   IntervalWaves:
   - {fileID: 11400000, guid: be0d76929265b9c43a916a6571cf2536, type: 2}
   - {fileID: 11400000, guid: 9ccad793efc9b224897fb9fd08e5fb9a, type: 2}

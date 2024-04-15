@@ -111,7 +111,7 @@ public class FieldUnitManager : MonoBehaviour
             else
             {
                 // TODO: Win screen, or text, or credits
-                //DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
+                DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
                 SceneManager.LoadScene( SceneManager.GetActiveScene().name );
             }
         }
@@ -138,9 +138,9 @@ public class FieldUnitManager : MonoBehaviour
         fieldUnit.maxHealth *= (isPlayerFaction ? _gameSettings.PlayerUnitHealthMod : _gameSettings.EnemyUnitHealthMod);
         if (!isSummon)
         {
-            // stat boost based on time factor. Every 60 secs boosts enemy ATK and HP by 10%, ally by 5%.
+            // stat boost based on time factor. Every 30 secs boosts enemy ATK and HP by 10%, ally by 5%.
             // enemies get an additional hp and damage mod from the game settings, based on difficulty.
-            var statBoostFactor = _secondsElapsed / 60.0f;
+            var statBoostFactor = _secondsElapsed / 300.0f;
             fieldUnit.maxHealth *= (isPlayerFaction ?
                 (1.0f + (statBoostFactor * 0.5f)) :
                 (1.0f + (statBoostFactor)));

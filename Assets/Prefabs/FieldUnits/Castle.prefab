@@ -64,7 +64,8 @@ MonoBehaviour:
   target: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
-  damageModifier: 1
+  timeDamageModifier: 1
+  auraDamageModifier: 1
   defenseModifier: 1
   cooldownModifier: 1
   movementModifier: 1
@@ -144,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d35207e443249ce9ff17698592d719f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 25
   cooldown: 1.5
   range: 4
   canTargetFlying: 1

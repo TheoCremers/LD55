@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 187110772cfe421cb5684b5138efc5ad, type: 3}
-  m_Name: EasyMode
+  m_Name: Normal
   m_EditorClassIdentifier: 
-  GameModeType: 0
+  GameModeType: 1
   PlayerCastleHealthMod: 4
   EnemyCastleHealthMod: 2
   PlayerUnitHealthMod: 2
   EnemyUnitHealthMod: 0.8
   EnemyUnitDamageMod: 0.8
-  IntervalWaves: []
+  IntervalWaves:
+  - {fileID: 11400000, guid: 5380917a6a3fe8a4491d54587b535e51, type: 2}
+  - {fileID: 11400000, guid: c6b832ac5d0bada4a8d6f5460386381f, type: 2}
+  - {fileID: 11400000, guid: ad2faf14084b5ce40864e17ff6a813db, type: 2}

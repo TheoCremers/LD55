@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,17 +21,16 @@ public class GameStartPanel : MonoBehaviour
 
     void Awake()
     {
-        //var data = DataPersistenceManager.instance.LoadGame();
+        var gameData = DataPersistenceManager.instance.LoadGame();
         _canvasGroup = GetComponent<CanvasGroup>();
         easybutton?.onClick.AddListener(() => StartButtonClicked(GameModeType.Easy));
         normalbutton?.onClick.AddListener(() => StartButtonClicked(GameModeType.Normal));
-        //if (data.HighestClearedMode >= GameModeType.Normal)
-        //{
+        if (gameData.HighestClearedMode >= GameModeType.Normal)
+        {
             hardbutton.interactable = true;
             hardbutton.GetComponentInChildren<TextMeshProUGUI>().SetText("Hard");
             hardbutton.onClick.AddListener(() => StartButtonClicked(GameModeType.Hard));
-        //}
-        // TODO: Add harder levels
+        }
 
         _canvasGroup.alpha = 0f;
         _canvasGroup.blocksRaycasts = false;
