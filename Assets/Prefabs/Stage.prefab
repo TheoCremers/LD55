@@ -799,6 +799,7 @@ MonoBehaviour:
   fieldUnitSlainEventChannel: {fileID: 11400000, guid: def25e3b9e99a5b4ca234f62231fc07c, type: 2}
   hostageGainedEventChannel: {fileID: 11400000, guid: fbfa12967aa90c940b62800faeb99b0f, type: 2}
   gameStartEvent: {fileID: 11400000, guid: b8824742072e50548b0df53127ff8145, type: 2}
+  gameOverEventChannel: {fileID: 11400000, guid: bb56fe34d744d594c814df259dc31196, type: 2}
   unitWaveEventChannel: {fileID: 11400000, guid: 6e4753ff09d212a4a97f80225de64d87, type: 2}
   gameConfiguredEvent: {fileID: 11400000, guid: 37096871536791c4ab0cbf703df691bf, type: 2}
   playerCastle: {fileID: 3671688999876445518}
