@@ -1,4 +1,4 @@
-using System;
+using Cinemachine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,6 +18,8 @@ public class FieldUnitManager : MonoBehaviour
 
     public FieldUnit playerCastle;
     public FieldUnit enemyCastle;
+
+    public CinemachineVirtualCamera virtualCamera;
 
     private GameModeType _gameModeType;
     private GameModeSettings _gameSettings;
@@ -46,6 +48,17 @@ public class FieldUnitManager : MonoBehaviour
         _fieldUnits.Clear();
         _fieldUnits.Add(playerCastle);
         _fieldUnits.Add(enemyCastle);
+    }
+
+    private void Update()
+    {
+        if (virtualCamera != null)
+        {
+            // Set camera lookat object to right-most friendly unit
+            var friendlyUnits = _fieldUnits.Where(f => f.isPlayerFaction);
+            var rightMostUnit = friendlyUnits.OrderByDescending(u => u.transform.position.x).FirstOrDefault();
+            virtualCamera.Follow = rightMostUnit.transform;
+        }
     }
 
     private void OnDestroy()
