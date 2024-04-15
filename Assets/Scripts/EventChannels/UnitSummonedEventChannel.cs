@@ -8,7 +8,6 @@ public class UnitSummonedEventChannel : ScriptableObject
 
     public void RaiseEvent(GameObject unitPrefab, float bloodCost)
     {
-        Debug.Log("UnitSummonedEvent Raised!");
         OnEventRaised.Invoke(unitPrefab, bloodCost);
     }
 }

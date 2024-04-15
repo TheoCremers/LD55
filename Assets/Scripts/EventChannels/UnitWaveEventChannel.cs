@@ -8,7 +8,7 @@ public class UnitWaveEventChannel : ScriptableObject
 
     public void RaiseEvent(UnitWave unitWave)
     {
-        Debug.Log("spawning interval wave");
+        Debug.Log("spawning interval wave " + unitWave.name);
         OnEventRaised.Invoke(unitWave);
     }
 }

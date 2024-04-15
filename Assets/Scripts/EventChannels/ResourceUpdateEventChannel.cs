@@ -8,7 +8,6 @@ public class ResourceUpdateEventChannel : ScriptableObject
 
     public void RaiseEvent(float knowledge, float totalLifeForce)
     {
-        Debug.Log("ResourceUpdateEvent Raised!");
         OnEventRaised.Invoke(knowledge, totalLifeForce);
     }
 }
