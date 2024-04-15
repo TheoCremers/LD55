@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 63
   cooldown: 2
-  range: 0.1
+  range: 0.4
   canTargetFlying: 0
   cleaveRange: 0.5
 --- !u!1 &7763447321765551378

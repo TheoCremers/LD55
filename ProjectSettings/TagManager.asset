@@ -6,6 +6,7 @@ TagManager:
   tags:
   - DestroyProjectiles
   - FieldUnitHitBox
+  - Aura
   layers:
   - Default
   - TransparentFX

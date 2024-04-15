@@ -63,6 +63,7 @@ public class FieldUnit : MonoBehaviour
 
     private void FixedUpdate()
     {
+        UpdateCurrentAuraEffects();
         ApplyAuraEffects();
         _attackCooldownRemaining -= Time.deltaTime;
         _retargetCooldownRemaining -= Time.deltaTime;
@@ -90,6 +91,36 @@ public class FieldUnit : MonoBehaviour
         }
     }
 
+    private void UpdateCurrentAuraEffects()
+    {
+        appliedAuraEffects.Clear();
+        var filter = new ContactFilter2D().NoFilter();
+        var results = new List<Collider2D>();
+        collider.OverlapCollider(filter, results);
+
+        foreach (var collision in results)
+        {
+            if (collision.CompareTag("Aura"))
+            {
+                var auras = collision.GetComponentsInParent<Aura>();
+                if (auras != null && auras.Any())
+                {
+                    foreach (var aura in auras)
+                    {
+                        if (aura.isBuff && (aura.parent.isPlayerFaction == isPlayerFaction))
+                        {
+                            ApplyAuraEffect(aura.appliedEffect);
+                        }
+                        if (!aura.isBuff && (aura.parent.isPlayerFaction != isPlayerFaction))
+                        {
+                            ApplyAuraEffect(aura.appliedEffect);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     private void ApplyAuraEffects()
     {
         if (appliedAuraEffects.Contains(AuraEffect.Empower))
