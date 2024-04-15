@@ -6,4 +6,5 @@ public static class SummonHintText
     public const string Extreme = "extreme risk";
     public const string Lethal = "DEATH";
     public const string Impossible = "No acolytes";
+    public const string Unknown = "???";
 }

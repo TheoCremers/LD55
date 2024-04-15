@@ -16,9 +16,17 @@ public class SummonPanel : MonoBehaviour
 
     public void UpdateAllSummons(float knowledge, float totalLifeForce, int numberOfAcolytes)
     {
+        var unknownSummonSet = false;
         foreach (var summon in _summonList) 
         { 
             summon.OnKnowledgeUpdated(knowledge, totalLifeForce, numberOfAcolytes);
+            if (!summon.canBeSummoned && !unknownSummonSet)
+            {
+                summon.canBeSummoned = true;
+                unknownSummonSet = true;
+            }
+
+            summon.gameObject.SetActive(summon.canBeSummoned);
         }
     }
 
