@@ -7,11 +7,14 @@ public class AcolytePanel : MonoBehaviour
     public GameObject acolytePrefab;
     public RectTransform acolyteParent;
     public int startingMaxAcolytes = 5;
+    public float knowledgeLostFactor = 0.75f;
 
     private List<AcolyteSlot> _acolyteSlots;
     private int _maxAcolyteSlots;
 
-    public bool hasEmptySlots => _acolyteSlots.Any(s => s.isActive && !s.hasAcolyte);
+    public bool HasEmptySlots => _acolyteSlots.Any(s => s.isActive && !s.hasAcolyte);
+
+    public int NumberOfAcolytes => _acolyteSlots.Count(s => s.hasAcolyte);
 
     private void Awake()
     {
@@ -23,23 +26,31 @@ public class AcolytePanel : MonoBehaviour
         }
     }
 
-    public bool DrainBloodFromAcolytes(float amount)
+    /// <summary>
+    /// Returns amount of knowledge lost
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public float DrainBloodFromAcolytes(float amount)
     {
         var occupiedAccolyteSlots = _acolyteSlots.Where(s => s.isActive && s.hasAcolyte).ToList();
+        var knowledgeLost = 0f;
+
         while (amount > 0)
         {
-            if (occupiedAccolyteSlots.Count <= 0) return false;
+            if (occupiedAccolyteSlots.Count <= 0) break;
 
             var sacrificeSlot = occupiedAccolyteSlots.Last();
             amount = sacrificeSlot.acolyte.ChangeCurrentHealth(-amount);
             if (sacrificeSlot.acolyte.currentHealth <= 0)
             {
+                knowledgeLost = sacrificeSlot.acolyte.knowledge * knowledgeLostFactor;
                 sacrificeSlot.SacrificeAcolyte();
                 occupiedAccolyteSlots.Remove(sacrificeSlot);
             }
         }
 
-        return true;
+        return knowledgeLost;
     }
 
     public void AddAcolyteSlot()
@@ -54,8 +65,8 @@ public class AcolytePanel : MonoBehaviour
         return _acolyteSlots.Sum(s => s.hasAcolyte? s.acolyte.currentHealth : 0f);
     }
 
-    public void AddAcolyte(float lifeForce)
+    public void AddAcolyte(float knowledge, float lifeForce)
     {
-        _acolyteSlots.FirstOrDefault(s => s.isActive && !s.hasAcolyte)?.AddAcolyte(lifeForce, acolytePrefab);
+        _acolyteSlots.FirstOrDefault(s => s.isActive && !s.hasAcolyte)?.AddAcolyte(knowledge, lifeForce, acolytePrefab);
     }
 }

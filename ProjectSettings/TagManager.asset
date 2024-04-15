@@ -19,10 +19,8 @@ TagManager:
   - ProjectileHitbox
   - Projectile
   - 
-  - 
-  - 
-  - 
-  - 
+  - MeleeUnit
+  - RangedUnit
   - 
   - 
   - 

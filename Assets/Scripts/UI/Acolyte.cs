@@ -8,6 +8,7 @@ public class Acolyte : MonoBehaviour
     public Image icon;
     public LifeBar lifeBar;
     public float maxHealth;
+    public float knowledge;
     public ParticleSystem deathParticles;
 
     public float currentHealth { get; private set; }
