@@ -269,6 +269,10 @@ public class FieldUnit : MonoBehaviour
 
     private void SpawnDeathParticles()
     {
-        if (deathParticles != null) Instantiate(deathParticles, transform, false);
+        if (deathParticles != null) 
+        { 
+            var emitter = Instantiate(deathParticles);
+            emitter.transform.position = transform.position;
+        } 
     }
 }

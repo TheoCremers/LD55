@@ -1700,6 +1700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameStartPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7909733009858685981, guid: 5404424537363c541a9e8c4d034e64b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8131952750853800512, guid: 5404424537363c541a9e8c4d034e64b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

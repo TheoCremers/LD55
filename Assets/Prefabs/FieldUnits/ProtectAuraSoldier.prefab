@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProtectAuraSoldier
       objectReference: {fileID: 0}
+    - target: {fileID: 2807675096949967938, guid: b76d66dbbc25c934cab4cae0409843d1, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3518385389104721060, guid: b76d66dbbc25c934cab4cae0409843d1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
