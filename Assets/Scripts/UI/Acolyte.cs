@@ -50,7 +50,8 @@ public class Acolyte : MonoBehaviour
     {
         if (deathParticles != null)
         {
-            var emitter = Instantiate(deathParticles, transform, false);
+            var emitter = Instantiate(deathParticles);
+            emitter.transform.position = transform.position;
             emitter.gameObject.layer = 5;
         }
     }
