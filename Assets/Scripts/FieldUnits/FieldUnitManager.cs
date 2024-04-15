@@ -13,6 +13,7 @@ public class FieldUnitManager : MonoBehaviour
     public FieldUnitEventChannel fieldUnitSlainEventChannel;
     public VoidEventChannel hostageGainedEventChannel;
     public GameStartEventChannel gameStartEvent;
+    public GameOverEventChannel gameOverEventChannel;
     public UnitWaveEventChannel unitWaveEventChannel;
     public VoidEventChannel gameConfiguredEvent;
 
@@ -35,10 +36,12 @@ public class FieldUnitManager : MonoBehaviour
     public const float maxRandomVerticalOffset = 0.15f;
     public int hostagePerKills = 5;
     private static int _killCount;
+    private float _playTime;
 
     private void Awake()
     {
         _killCount = 0;
+        _playTime = 0f;
         nextThresholdPercentage = 0;
         
         unitSummonedEventChannel.OnEventRaised += OnUnitSummonedEvent;
@@ -78,6 +81,10 @@ public class FieldUnitManager : MonoBehaviour
 
     private void Update()
     {
+        gameOverEventChannel.RaiseEvent(true, _gameModeType);
+
+        _playTime += Time.deltaTime;
+
         if (virtualCamera != null)
         {
             // Set camera lookat object to right-most friendly unit
@@ -104,20 +111,16 @@ public class FieldUnitManager : MonoBehaviour
         {
             if (fieldUnit.isPlayerFaction)
             {
-                // gg go next
-                // TODO: Loss animation, or text, or something
-                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+                gameOverEventChannel.RaiseEvent(false, _gameModeType);
             }
             else
             {
-                // TODO: Win screen, or text, or credits
                 //DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
-                SceneManager.LoadScene( SceneManager.GetActiveScene().name );
+                gameOverEventChannel.RaiseEvent(true, _gameModeType, _playTime);
             }
         }
         else
         {
-            // TODO: Death effect / animation
             _fieldUnits.Remove(fieldUnit);
             if (!fieldUnit.isPlayerFaction)
             {
