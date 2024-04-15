@@ -20,6 +20,11 @@ public class Summon : MonoBehaviour
     private bool _canBeSummoned = true;
     private float _actualBloodCost = 0f;
 
+    private const float LowRiskThreshold = 100f;
+    private const float MediumRiskthreshold = 250f;
+    private const float HighRiskThreshold = 500f;
+    private const float UnknownRisk = 1000f;
+
     private void Start()
     {
         summonButton ??= GetComponentInChildren<Button>();
@@ -41,35 +46,49 @@ public class Summon : MonoBehaviour
 
     public void OnKnowledgeUpdated(float knowledge, float totalLifeForce)
     {
-        //_canBeSummoned = knowledge >= minKnowledgeRequired;
+        _canBeSummoned = knowledge >= minKnowledgeRequired;
+
+        if (!_canBeSummoned) 
+        { 
+            gameObject.SetActive(false);
+            return;
+        }
+        else
+        { 
+            gameObject.SetActive(true);
+        }
 
         _actualBloodCost = CalculateActualBloodCost(knowledge);
 
-        if (_actualBloodCost >= totalLifeForce)
-        {
-            hintTextMesh.text = SummonHintText.Lethal;
-            return;
-        }
+        if (_actualBloodCost < LowRiskThreshold) hintTextMesh.text = SummonHintText.Low;
+        else if (_actualBloodCost < MediumRiskthreshold) hintTextMesh.text = SummonHintText.Medium;
+        else if (_actualBloodCost < HighRiskThreshold) hintTextMesh.text = SummonHintText.Hard;
+        else if (_actualBloodCost < UnknownRisk) hintTextMesh.text = SummonHintText.Extreme;
+        else hintTextMesh.text = SummonHintText.Lethal;
 
-        if (knowledge <= minKnowledgeRequired)
-        {
-            hintTextMesh.text = SummonHintText.Extreme;
-            return;
-        }
+        //if (_actualBloodCost >= totalLifeForce)
+        //{
+        //    hintTextMesh.text = SummonHintText.Lethal;
+        //    return;
+        //}
 
-        if (knowledge >= maxKnowledgeForSummon)
-        {
-            _actualBloodCost = minBloodcost;
-            hintTextMesh.text = SummonHintText.Low;
-            return;
-        }
-        
-        hintTextMesh.text = _actualBloodCost < medianBloodCost ? SummonHintText.Medium : SummonHintText.Hard;
+        //if (knowledge <= minKnowledgeRequired)
+        //{
+        //    hintTextMesh.text = SummonHintText.Extreme;
+        //    return;
+        //}
+
+        //if (knowledge >= maxKnowledgeForSummon)
+        //{
+        //    hintTextMesh.text = SummonHintText.Low;
+        //    return;
+        //}
+
+        //hintTextMesh.text = _actualBloodCost < medianBloodCost ? SummonHintText.Medium : SummonHintText.Hard;
     }
 
     private float CalculateActualBloodCost(float knowledge)
     {
-
         if (knowledge <= minKnowledgeRequired) return maxBloodCost;
         if (knowledge >= maxKnowledgeForSummon) return minBloodcost;
 
