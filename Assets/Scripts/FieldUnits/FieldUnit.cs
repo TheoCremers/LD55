@@ -12,6 +12,7 @@ public class FieldUnit : MonoBehaviour
     
     [SerializeField] private ParticleSystem damageParticles = null;
     [SerializeField] private ParticleSystem healingParticles = null;
+    [SerializeField] private ParticleSystem deathParticles = null;
     
 
     public SpriteRenderer spriteRenderer;
@@ -215,6 +216,7 @@ public class FieldUnit : MonoBehaviour
     public async Task DeathAnimation()
     {
         spriteRenderer.DOKill();
+        SpawnDeathParticles();
         await spriteRenderer.DOColor(new Color(0.25f, 0, 0), 0.2f).AsyncWaitForCompletion();
         await spriteRenderer.DOFade(0f, 0.2f).AsyncWaitForCompletion();
         Destroy(gameObject);
@@ -251,10 +253,16 @@ public class FieldUnit : MonoBehaviour
 
     private void SpawnDamageParticles()
     {
-        var emitter = Instantiate(damageParticles, transform, false);
+        if (damageParticles != null) Instantiate(damageParticles, transform, false);
     }
+
     private void SpawnHealingParticles()
     {
-        var emitter = Instantiate(healingParticles, transform, false);
+        if (healingParticles != null) Instantiate(healingParticles, transform, false);
+    }
+
+    private void SpawnDeathParticles()
+    {
+        if (deathParticles != null) Instantiate(deathParticles, transform, false);
     }
 }

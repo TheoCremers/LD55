@@ -8,6 +8,8 @@ public class Acolyte : MonoBehaviour
     public Image icon;
     public LifeBar lifeBar;
     public float maxHealth;
+    public ParticleSystem deathParticles;
+
     public float currentHealth { get; private set; }
 
     private void Start()
@@ -38,8 +40,18 @@ public class Acolyte : MonoBehaviour
     public async Task DeathAnimation()
     {
         icon.DOKill();
+        SpawnDeathParticles();
         await icon.DOColor(new Color(0.25f, 0, 0), 0.2f).AsyncWaitForCompletion();
         await icon.DOFade(0f, 0.2f).AsyncWaitForCompletion();
         Destroy(gameObject);
+    }
+
+    private void SpawnDeathParticles()
+    {
+        if (deathParticles != null)
+        {
+            var emitter = Instantiate(deathParticles, transform, false);
+            emitter.gameObject.layer = 5;
+        }
     }
 }

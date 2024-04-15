@@ -128,6 +128,7 @@ MonoBehaviour:
   icon: {fileID: 5022209636020683473}
   lifeBar: {fileID: 8794868893507381424}
   maxHealth: 100
+  deathParticles: {fileID: 6033935768860525670, guid: 10d8bc7aa68cc3b438d3c1271966353f, type: 3}
 --- !u!1001 &8567889332610939882
 PrefabInstance:
   m_ObjectHideFlags: 0
