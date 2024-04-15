@@ -15,10 +15,10 @@ MonoBehaviour:
   units:
   - minAmount: 2
     maxAmount: 2
-    unit: {fileID: 2807675096949967938, guid: b76d66dbbc25c934cab4cae0409843d1, type: 3}
+    unit: {fileID: 7726832809575172877, guid: 420f7df675e8f3d4ea8f08484a31de96, type: 3}
   - minAmount: 2
     maxAmount: 2
-    unit: {fileID: 2807675096949967938, guid: ee37982970a3834478b2ab40d2710434, type: 3}
+    unit: {fileID: 2501576552736083768, guid: 23be160f470c8c94da80638be0cee81f, type: 3}
   - minAmount: 1
     maxAmount: 1
     unit: {fileID: 6091206876418793286, guid: 479818c17e279704db836cdc9763adb3, type: 3}
