@@ -51,6 +51,7 @@ MonoBehaviour:
   FieldUnitSlainEventChannel: {fileID: 11400000, guid: def25e3b9e99a5b4ca234f62231fc07c, type: 2}
   damageParticles: {fileID: 6033935768860525670, guid: cc957f47dbca95044b983c988a177b70, type: 3}
   healingParticles: {fileID: 33476908951788772, guid: a3b87fb5841e9d34d9f1a25d24a63a56, type: 3}
+  deathParticles: {fileID: 0}
   spriteRenderer: {fileID: 3216286695863328958}
   rigidbody2D: {fileID: 3773749012926337376}
   collider: {fileID: 6238113201981068253}

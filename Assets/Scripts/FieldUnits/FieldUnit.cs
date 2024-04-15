@@ -14,7 +14,7 @@ public class FieldUnit : MonoBehaviour
     [SerializeField] private ParticleSystem healingParticles = null;
     [SerializeField] private ParticleSystem deathParticles = null;
     
-
+    public LifeBar lifeBar = null;
     public SpriteRenderer spriteRenderer;
     public new Rigidbody2D rigidbody2D;
     public new Collider2D collider;
@@ -172,6 +172,7 @@ public class FieldUnit : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage * defenseModifier;
+        lifeBar?.SetHealthRatio(currentHealth / maxHealth);
         SpawnDamageParticles();
         DamagePopup.Create(this.transform, (int)damage, false);
         StopCoroutine(DamageFlash());

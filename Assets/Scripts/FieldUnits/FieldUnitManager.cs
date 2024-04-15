@@ -54,7 +54,9 @@ public class FieldUnitManager : MonoBehaviour
         _gameModeType = gameModeType;
         _gameSettings = GameAssets.Instance.GameModeSettingsList.First(x => x.GameModeType == gameModeType);
         playerCastle.maxHealth = 1000 * _gameSettings.PlayerCastleHealthMod;
+        playerCastle.currentHealth = playerCastle.maxHealth;
         enemyCastle.maxHealth = 1000 * _gameSettings.EnemyCastleHealthMod;
+        enemyCastle.currentHealth = enemyCastle.maxHealth;
         gameConfiguredEvent.RaiseEvent();
     }
 
