@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameStartEvent: {fileID: 11400000, guid: b8824742072e50548b0df53127ff8145, type: 2}
+  UnitWaveEventChannel: {fileID: 11400000, guid: 6e4753ff09d212a4a97f80225de64d87, type: 2}
   SkullPrefab: {fileID: 9046927095796264780, guid: b5839c92e32f82f41a5b71a57b863b75, type: 3}
 --- !u!1001 &6649471669593304293
 PrefabInstance:

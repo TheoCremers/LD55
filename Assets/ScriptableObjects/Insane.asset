@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Insane
   m_EditorClassIdentifier: 
   GameModeType: 4
-  PlayerCastleHealthMod: 1
-  EnemyCastleHealthMod: 10
-  PlayerUnitHealthMod: 0.9
-  EnemyUnitHealthMod: 1.1
-  EnemyUnitDamageMod: 1.1
+  PlayerCastleHealthMod: 3
+  EnemyCastleHealthMod: 15
+  PlayerUnitHealthMod: 0.85
+  EnemyUnitHealthMod: 1.15
+  EnemyUnitDamageMod: 1.15
   IntervalWaves:
-  - {fileID: 11400000, guid: cda91d387f1d3b14f86f9d4a0436ab60, type: 2}
-  - {fileID: 11400000, guid: 18e34934c84e9764eb028d98ec1b2133, type: 2}
-  - {fileID: 11400000, guid: 7fc51c5a9fbfe9244a8636599646fe53, type: 2}
-  - {fileID: 11400000, guid: 64be81d48ffc62941a80f02e696d2ee9, type: 2}
+  - {fileID: 11400000, guid: 0ed7e1b16132209468a9600198b1b797, type: 2}
+  - {fileID: 11400000, guid: d47ee6e39ef4de7498ec091b30e9b418, type: 2}
+  - {fileID: 11400000, guid: febb548ccc7271b4587251c02492d225, type: 2}
+  - {fileID: 11400000, guid: 22cde3e95345dce43819315420af2a7e, type: 2}
+  - {fileID: 11400000, guid: 7db687b6c57e4804698c30b18b03c995, type: 2}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VeryHard
   m_EditorClassIdentifier: 
   GameModeType: 3
-  PlayerCastleHealthMod: 1
+  PlayerCastleHealthMod: 2
   EnemyCastleHealthMod: 6
   PlayerUnitHealthMod: 1
   EnemyUnitHealthMod: 1

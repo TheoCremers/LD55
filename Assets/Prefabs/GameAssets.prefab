@@ -46,6 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameModeSettingsList:
   - {fileID: 11400000, guid: fe13674064066124f8774e37664f3073, type: 2}
+  - {fileID: 11400000, guid: fc2cbee4ece01334988c6de91e3b4b39, type: 2}
   - {fileID: 11400000, guid: 4dbd522d5d988a04baf1af1dfa627d54, type: 2}
   - {fileID: 11400000, guid: f0e5544c4cd855d4fa04ea586477bc14, type: 2}
+  - {fileID: 11400000, guid: 2eeddb16ca8ba7e4f9aa2f226bccc6a0, type: 2}
   DamagePopup: {fileID: 7300957740295985565, guid: 81a7a4ac31ef37f40983bb759c808fdf, type: 3}
