@@ -63,8 +63,12 @@ public class FieldUnit : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateCurrentAuraEffects();
-        ApplyAuraEffects();
+        if (!IsCastle)
+        {
+            UpdateCurrentAuraEffects();
+            ApplyAuraEffects();
+        }
+
         _attackCooldownRemaining -= Time.deltaTime;
         _retargetCooldownRemaining -= Time.deltaTime;
 
