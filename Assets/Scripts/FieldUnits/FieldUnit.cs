@@ -155,11 +155,11 @@ public class FieldUnit : MonoBehaviour
     {
         if (appliedAuraEffects.Contains(AuraEffect.Degen))
         {
-            TakeDamage(maxHealth * 0.05f); // 5% max hp dmg per second. Maybe tweak or customize in aura
+            TakeDamage(maxHealth * 0.03f); // 5% max hp dmg per second. Maybe tweak or customize in aura
         }
         if (appliedAuraEffects.Contains(AuraEffect.Healing))
         {
-            TakeHealing(maxHealth * 0.05f); // 5% max hp healing per second. Maybe tweak or customize in aura
+            TakeHealing(maxHealth * 0.03f); // 5% max hp healing per second. Maybe tweak or customize in aura
         }
     }
 
