@@ -111,7 +111,7 @@ public class FieldUnitManager : MonoBehaviour
             else
             {
                 // TODO: Win screen, or text, or credits
-                DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
+                //DataPersistenceManager.instance.SaveGame(new GameData() {HighestClearedMode = _gameModeType});
                 SceneManager.LoadScene( SceneManager.GetActiveScene().name );
             }
         }
