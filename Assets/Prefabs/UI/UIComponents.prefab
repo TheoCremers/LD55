@@ -1410,15 +1410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Color.b
-      value: 0.17182851
+      value: 0.7176471
       objectReference: {fileID: 0}
     - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Color.g
-      value: 0.08018869
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.34117648
       objectReference: {fileID: 0}
     - target: {fileID: 8819385151061421992, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Pivot.x
@@ -1846,6 +1846,18 @@ PrefabInstance:
     - target: {fileID: 6314740030493676941, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Name
       value: PlayerKeepHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
+      propertyPath: m_Color.g
+      value: 0.14117648
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378076246939810627, guid: 1446f78bdab70b34687245940a827270, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9450981
       objectReference: {fileID: 0}
     - target: {fileID: 8819385151061421992, guid: 1446f78bdab70b34687245940a827270, type: 3}
       propertyPath: m_Pivot.x
