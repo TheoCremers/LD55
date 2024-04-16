@@ -19,6 +19,8 @@ public class DataPersistenceManager : MonoBehaviour
     public GameData NewGame()
     {
         _gameData = new GameData();
+        
+        //_gameData.HighestClearedMode = GameModeType.Challenge;
         return _gameData;
     }
 

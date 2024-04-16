@@ -141,6 +141,8 @@ public class FieldUnitManager : MonoBehaviour
         {
             // stat boost based on time factor. Every 30 secs boosts enemy ATK and HP by 10%, ally by 5%.
             // enemies get an additional hp and damage mod from the game settings, based on difficulty.
+            // capped at 60 minutes.
+            _secondsElapsed = Mathf.Min(_secondsElapsed, 3600.0f);
             var statBoostFactor = _secondsElapsed / 300.0f;
             fieldUnit.maxHealth *= (isPlayerFaction ?
                 (1.0f + (statBoostFactor * 0.5f)) :

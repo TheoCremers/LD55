@@ -244,6 +244,7 @@ public class FieldUnit : MonoBehaviour
 
     private void TakeHealing(float healing)
     {
+        healing = Mathf.Min(healing, 99.0f);
         currentHealth = Mathf.Min(currentHealth + healing, maxHealth);
         DamagePopup.Create(this.transform, (int)healing, true);
         SpawnHealingParticles();

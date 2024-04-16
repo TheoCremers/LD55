@@ -147,7 +147,7 @@ MonoBehaviour:
   moveSpeed: 0.5
   flying: 0
   target: {fileID: 0}
-  maxHealth: 800
+  maxHealth: 1500
   currentHealth: 0
   timeDamageModifier: 1
   auraDamageModifier: 1
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 63
-  cooldown: 2
+  cooldown: 1.6
   range: 0.4
   canTargetFlying: 0
   cleaveRange: 0.5

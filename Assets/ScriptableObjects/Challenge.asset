@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 187110772cfe421cb5684b5138efc5ad, type: 3}
+  m_Name: Challenge
+  m_EditorClassIdentifier: 
+  GameModeType: 7
+  PlayerCastleHealthMod: 10
+  EnemyCastleHealthMod: 30
+  PlayerUnitHealthMod: 0.8
+  EnemyUnitHealthMod: 1.25
+  EnemyUnitDamageMod: 1.25
+  IntervalWaves:
+  - {fileID: 11400000, guid: 0ed7e1b16132209468a9600198b1b797, type: 2}
+  - {fileID: 11400000, guid: d47ee6e39ef4de7498ec091b30e9b418, type: 2}
+  - {fileID: 11400000, guid: febb548ccc7271b4587251c02492d225, type: 2}
+  - {fileID: 11400000, guid: 22cde3e95345dce43819315420af2a7e, type: 2}
+  - {fileID: 11400000, guid: 7db687b6c57e4804698c30b18b03c995, type: 2}
+  - {fileID: 11400000, guid: 7cf2802bb17b0e649bbcd4d97950bf96, type: 2}
+  - {fileID: 11400000, guid: ee1df59e46052814d9764a87d842d922, type: 2}
+  - {fileID: 11400000, guid: 7d864bc4491890746b1ce79e0b1ddf4b, type: 2}
+  - {fileID: 11400000, guid: e46272cf8694eb64486c5e02813e983b, type: 2}
+  - {fileID: 11400000, guid: 6362ffcca6ce98b4ab7d0f3461a44d8e, type: 2}
